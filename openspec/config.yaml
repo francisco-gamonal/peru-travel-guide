@@ -1,20 +1,28 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+context: |
+  Language policy (artifact-language-policy):
+  - Write all narrative content in Spanish: explanations, motivation, impact, requirement descriptions, and WHEN/THEN scenarios.
+  - Keep in English without translation: code identifiers (variables, functions, classes, modules), file paths, API names, endpoints, HTTP methods, status codes, libraries, frameworks, literal values in code/JSON/YAML examples, and kebab-case capability or change names.
+  - Use backticks for technical terms on first mention (e.g. `commit`, `middleware`, `GET /api/v1/export`).
+  - Never translate code identifiers or paths into Spanish.
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+  Example (narrative in Spanish, technical terms in English):
+  El sistema SHALL permitir exportar datos en formato CSV mediante `GET /api/v1/export`.
+  - **WHEN** el usuario invoca `GET /api/v1/export`
+  - **THEN** el sistema responde con status code `200` y un archivo CSV
+
+rules:
+  proposal:
+    - Redactar las secciones Why, What Changes e Impact en español.
+    - Mantener nombres de capabilities, cambios y rutas en inglés (kebab-case).
+  design:
+    - Redactar Context, Goals, Decisions y Risks en español.
+    - Citar funciones, módulos, endpoints e identificadores técnicos en inglés con backticks; no traducirlos.
+  specs:
+    - Redactar descripciones de requisitos y escenarios WHEN/THEN en español; usar SHALL/MUST en español.
+    - Los nombres en `### Requirement:` y `#### Scenario:` pueden estar en español.
+    - Citar código, endpoints, tipos y paths en inglés entre backticks (p. ej. `GET /api/v1/export`).
+  tasks:
+    - Redactar descripciones de tareas en español.
+    - Mantener nombres de archivos, símbolos de código y comandos en inglés sin traducir.
