@@ -1,6 +1,12 @@
 schema: spec-driven
 
 context: |
+  Project constitution (read before proposing or implementing):
+  - specs/mission.md — product purpose, users, travel guide scope (Peru/Lima vs destination)
+  - specs/tech-stack.md — frameworks, versions, data sources, dev practices
+  - specs/roadmap.md — phased delivery through Production
+  Respect mission, stack, and roadmap in every change. Do not contradict without a dedicated OpenSpec change.
+
   Language policy (artifact-language-policy):
   - Write all narrative content in Spanish: explanations, motivation, impact, requirement descriptions, and WHEN/THEN scenarios.
   - Keep in English without translation: code identifiers (variables, functions, classes, modules), file paths, API names, endpoints, HTTP methods, status codes, libraries, frameworks, literal values in code/JSON/YAML examples, and kebab-case capability or change names.
