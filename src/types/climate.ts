@@ -28,3 +28,29 @@ export interface ClimateFile {
 export interface ClimateData {
 	destinations: ClimateDestination[];
 }
+
+export interface ClimateSeasonRow {
+	name: string;
+	tempRangeC: string;
+	rainfall: string;
+	description: string;
+}
+
+export interface ClimateBestTimeRow {
+	label: string;
+	monthsFormatted: string;
+	reason: string;
+}
+
+export interface ClimateSourceFooter {
+	source: string;
+	year: number;
+	sourceUrl?: string;
+}
+
+export interface ClimateWidgetView {
+	summary: string;
+	seasons: ClimateSeasonRow[];
+	bestTimes: ClimateBestTimeRow[];
+	sourceFooter: ClimateSourceFooter;
+}

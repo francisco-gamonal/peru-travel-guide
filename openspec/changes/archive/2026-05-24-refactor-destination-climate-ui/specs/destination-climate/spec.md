@@ -1,23 +1,4 @@
-# destination-climate Specification
-
-## Purpose
-Datos climáticos curados por destino, resumen para el viajero y ventanas recomendadas para viajar, integrados en la ficha estática `/destino/<id>/` junto a la comparación poblacional.
-
-## Requirements
-
-### Requirement: Datos climáticos curados por destino
-
-El sistema MUST cargar datos climáticos desde archivos estáticos en el repositorio (sin API en tiempo de ejecución en el MVP), con una entrada por cada `destination.id` de los destinos internacionales curados en Fase 2.
-
-#### Scenario: Datos disponibles en build
-
-- **WHEN** se ejecuta `pnpm build`
-- **THEN** los datos climáticos de Madrid, Ciudad de México y Buenos Aires están disponibles sin error de validación ni de parseo
-
-#### Scenario: Destino sin datos climáticos
-
-- **WHEN** existe un `destination.id` en población sin entrada climática correspondiente
-- **THEN** la ficha de destino no rompe el build y muestra un mensaje en español indicando que el clima aún no está disponible para ese destino
+## MODIFIED Requirements
 
 ### Requirement: Resumen climático en español
 
@@ -52,6 +33,8 @@ Para cada destino con datos climáticos, el sistema MUST mostrar al menos una ve
 - **WHEN** el usuario abre `/destino/madrid/` en viewport móvil (~390px)
 - **THEN** el resumen, las estaciones y las mejores épocas forman **un solo bloque principal** de clima antes del pie de la página (sin tres tarjetas `rounded-xl` hermanas apiladas)
 
+## ADDED Requirements
+
 ### Requirement: Presentación compacta del bloque climático
 
 El bloque «Clima y mejores épocas» MUST usar una estructura escaneable: encabezado con resumen, subsección de estaciones (tabla o lista densa) y subsección de mejores épocas, con atribución de fuente agrupada al final del widget.
@@ -65,21 +48,3 @@ El bloque «Clima y mejores épocas» MUST usar una estructura escaneable: encab
 
 - **WHEN** se ejecutan las pruebas E2E de destinos
 - **THEN** el contenedor `section[aria-labelledby="climate-heading"]` sigue siendo el ancla del bloque y contiene el texto climático esperado por destino
-
-### Requirement: Integración en ficha sin sustituir población
-
-El bloque climático MUST mostrarse en la misma ruta `/destino/<id>/` que la comparación poblacional, **después** de la sección de población, sin ocultar ni degradar los requisitos de `population-comparison`.
-
-#### Scenario: Población y clima en la misma visita
-
-- **WHEN** el usuario abre `/destino/madrid/`
-- **THEN** ve la comparación poblacional y, a continuación, clima y mejores épocas
-
-### Requirement: Sin cultura en esta entrega
-
-El alcance de `destination-climate` MUST NOT incluir bloques de cultura, costumbres detalladas ni calendario de eventos locales (Fase 4).
-
-#### Scenario: Sin sección de cultura
-
-- **WHEN** el usuario usa la ficha de destino tras esta entrega
-- **THEN** no se presenta una sección de cultura como si estuviera implementada

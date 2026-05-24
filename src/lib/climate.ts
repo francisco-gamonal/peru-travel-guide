@@ -5,6 +5,7 @@ import type {
 	ClimateDestination,
 	ClimateFile,
 	ClimateSeason,
+	ClimateWidgetView,
 } from '../types/climate';
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -107,6 +108,29 @@ export function getClimateByDestinationId(
 		return null;
 	}
 	return data.destinations.find((d) => d.destinationId === id) ?? null;
+}
+
+/** Vista compacta para el widget de clima en la ficha de destino. */
+export function buildClimateWidgetView(climate: ClimateDestination): ClimateWidgetView {
+	return {
+		summary: climate.summary,
+		seasons: climate.seasons.map((season) => ({
+			name: season.name,
+			tempRangeC: season.tempRangeC,
+			rainfall: season.rainfall,
+			description: season.description,
+		})),
+		bestTimes: climate.bestTimeToVisit.map((window) => ({
+			label: window.label,
+			monthsFormatted: formatMonthRange(window.months),
+			reason: window.reason,
+		})),
+		sourceFooter: {
+			source: climate.source,
+			year: climate.year,
+			...(climate.sourceUrl ? { sourceUrl: climate.sourceUrl } : {}),
+		},
+	};
 }
 
 /** Formatea meses abreviados para lectura (p. ej. Abr, May, Jun → Abr a Jun). */

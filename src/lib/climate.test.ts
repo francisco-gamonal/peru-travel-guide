@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+	buildClimateWidgetView,
 	formatMonthRange,
 	getClimateByDestinationId,
 	loadClimateData,
@@ -34,6 +35,34 @@ describe('getClimateByDestinationId', () => {
 	it('devuelve null para id inválido', () => {
 		expect(getClimateByDestinationId(data, 'no-existe')).toBeNull();
 		expect(getClimateByDestinationId(data, null)).toBeNull();
+	});
+});
+
+describe('buildClimateWidgetView', () => {
+	const data = loadClimateData();
+
+	it('expone resumen, estaciones y mejores épocas para Madrid', () => {
+		const madrid = getClimateByDestinationId(data, 'madrid');
+		expect(madrid).not.toBeNull();
+		const view = buildClimateWidgetView(madrid!);
+		expect(view.summary).toMatch(/continental/i);
+		expect(view.seasons.length).toBeGreaterThanOrEqual(2);
+		expect(view.seasons[0]).toMatchObject({
+			name: expect.any(String),
+			tempRangeC: expect.any(String),
+			rainfall: expect.any(String),
+			description: expect.any(String),
+		});
+		expect(view.bestTimes.length).toBeGreaterThanOrEqual(1);
+		expect(view.bestTimes[0]!.monthsFormatted).toMatch(/Abr/);
+	});
+
+	it('agrupa fuente en sourceFooter', () => {
+		const cdmx = getClimateByDestinationId(data, 'cdmx');
+		const view = buildClimateWidgetView(cdmx!);
+		expect(view.sourceFooter.source).toBeTruthy();
+		expect(view.sourceFooter.year).toBeGreaterThan(2000);
+		expect(view.sourceFooter.sourceUrl).toMatch(/^https?:/);
 	});
 });
 
