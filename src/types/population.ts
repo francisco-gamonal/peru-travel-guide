@@ -44,6 +44,26 @@ export interface PopulationData {
 	destinations: Destination[];
 }
 
+/** Barra horizontal en el widget de comparación (escala ya calculada). */
+export interface PopulationBarItem {
+	label: string;
+	population: number;
+	widthPercent: number;
+	source: string;
+	year: number;
+	sourceUrl?: string;
+}
+
+/** Vista agrupada país → ciudad para un único widget de UI. */
+export interface PopulationComparisonView {
+	destinationTitle: string;
+	cityRatioSentence: string;
+	countryBars: PopulationBarItem[];
+	cityBars: PopulationBarItem[];
+	districts: PopulationPlace[];
+	sourcesFooter: PopulationSourceMeta[];
+}
+
 /** Fila lista para comparar en la UI. */
 export interface ComparisonRow {
 	id: string;

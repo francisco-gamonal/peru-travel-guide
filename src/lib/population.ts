@@ -4,8 +4,11 @@ import type {
 	ComparisonRow,
 	Destination,
 	DestinationsFile,
+	PopulationBarItem,
+	PopulationComparisonView,
 	PopulationData,
 	PopulationPlace,
+	PopulationSourceMeta,
 	PeruReference,
 	PeruReferencesFile,
 } from '../types/population';
@@ -194,6 +197,129 @@ export function ratioLabel(
 	}
 	const percent = (ratio * 100).toLocaleString('es-PE', { maximumFractionDigits: 0 });
 	return `${numeratorLabel} representa aproximadamente el ${percent} % de la población de ${denominatorLabel}.`;
+}
+
+function sourceKey(meta: PopulationSourceMeta): string {
+	return `${meta.source}|${meta.year}|${meta.sourceUrl ?? ''}`;
+}
+
+/** Fuentes únicas para el pie del widget. */
+export function collectSourcesFooter(
+	sources: PopulationSourceMeta[],
+): PopulationSourceMeta[] {
+	const seen = new Set<string>();
+	const result: PopulationSourceMeta[] = [];
+	for (const item of sources) {
+		const key = sourceKey(item);
+		if (seen.has(key)) {
+			continue;
+		}
+		seen.add(key);
+		result.push(item);
+	}
+	return result;
+}
+
+function toBarItems(
+	entries: {
+		label: string;
+		population: number;
+		source: string;
+		year: number;
+		sourceUrl?: string;
+	}[],
+): PopulationBarItem[] {
+	const maxPopulation = Math.max(...entries.map((e) => e.population), 0);
+	return entries.map((entry) => ({
+		label: entry.label,
+		population: entry.population,
+		source: entry.source,
+		year: entry.year,
+		widthPercent: barWidthPercent(entry.population, maxPopulation),
+		...(entry.sourceUrl ? { sourceUrl: entry.sourceUrl } : {}),
+	}));
+}
+
+function getPeruCountryReference(references: PeruReference[]): PeruReference {
+	const peru = references.find((r) => r.kind === 'country');
+	if (!peru) {
+		throw new Error('Falta referente país Perú en peru-references.json');
+	}
+	return peru;
+}
+
+/** Agrupa población en capas país y ciudad para el widget compacto. */
+export function buildPopulationComparisonView(
+	destination: Destination,
+	references: PeruReference[],
+): PopulationComparisonView {
+	const peru = getPeruCountryReference(references);
+	const limaProvince = getLimaProvinceReference(references);
+	const districts = references.filter((r) => r.kind === 'district');
+
+	const countryBars = toBarItems([
+		{
+			label: peru.name,
+			population: peru.population,
+			source: peru.source,
+			year: peru.year,
+			sourceUrl: peru.sourceUrl,
+		},
+		{
+			label: destination.countryName,
+			population: destination.countryPopulation,
+			source: destination.countrySource,
+			year: destination.year,
+			sourceUrl: destination.countrySourceUrl,
+		},
+	]);
+
+	const cityBars = toBarItems([
+		{
+			label: limaProvince.name,
+			population: limaProvince.population,
+			source: limaProvince.source,
+			year: limaProvince.year,
+			sourceUrl: limaProvince.sourceUrl,
+		},
+		{
+			label: destination.cityName,
+			population: destination.cityPopulation,
+			source: destination.citySource,
+			year: destination.year,
+			sourceUrl: destination.citySourceUrl,
+		},
+	]);
+
+	const sourcesFooter = collectSourcesFooter([
+		peru,
+		limaProvince,
+		...districts,
+		{
+			source: destination.countrySource,
+			year: destination.year,
+			sourceUrl: destination.countrySourceUrl,
+		},
+		{
+			source: destination.citySource,
+			year: destination.year,
+			sourceUrl: destination.citySourceUrl,
+		},
+	]);
+
+	return {
+		destinationTitle: `${destination.cityName}, ${destination.countryName}`,
+		cityRatioSentence: ratioLabel(
+			`${destination.cityName} (ciudad)`,
+			destination.cityPopulation,
+			limaProvince.name,
+			limaProvince.population,
+		),
+		countryBars,
+		cityBars,
+		districts,
+		sourcesFooter,
+	};
 }
 
 export function buildComparisonRows(

@@ -27,7 +27,8 @@ El conjunto MUST funcionar como **guía personal de viaje**: ayuda a imaginar el
 1. **Referente peruano primero** — Perú y Lima (y distritos cuando aporte valor) son el punto de comparación por defecto.
 2. **Claridad sobre precisión absoluta** — Priorizar comparaciones que el usuario entienda; indicar fuentes o rangos cuando los datos sean estimados.
 3. **Decisión de viaje** — Cada pantalla o flujo debe acercar a «¿me conviene este destino y en qué momento?».
-4. **Respeto y utilidad** — La información cultural debe ser práctica y respetuosa, orientada al viajero, no estereotipada.
+4. **Densidad legible** — Priorizar comparaciones en pocos bloques escaneables (p. ej. un widget por tema) frente a listas largas de tarjetas repetidas.
+5. **Respeto y utilidad** — La información cultural debe ser práctica y respetuosa, orientada al viajero, no estereotipada.
 
 ## Alcance inicial (fuera de misión)
 

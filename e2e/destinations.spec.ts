@@ -14,6 +14,8 @@ function comparisonHeading(page: Page) {
 for (const { id, city } of destinations) {
 	test(`destino ${id} muestra ${city} en la comparación`, async ({ page }) => {
 		await page.goto(`/destino/${id}/`);
+		await expect(page.getByText('Por país')).toBeVisible();
+		await expect(page.getByText('Por ciudad')).toBeVisible();
 		await expect(comparisonHeading(page)).toContainText(city);
 		await expect(page.locator('body')).toContainText(city);
 		if (id === 'cdmx') {

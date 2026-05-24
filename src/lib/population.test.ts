@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import {
 	barWidthPercent,
 	buildComparisonRows,
+	buildPopulationComparisonView,
+	collectSourcesFooter,
 	computeRatio,
 	formatPopulation,
 	getDefaultDestinationId,
@@ -96,6 +98,40 @@ describe('ratioLabel', () => {
 	it('describe múltiplo cuando el numerador es mayor', () => {
 		const label = ratioLabel('Ciudad grande', 20_000_000, 'Lima', 10_000_000);
 		expect(label).toContain('veces');
+	});
+});
+
+describe('buildPopulationComparisonView', () => {
+	it('agrupa país Perú vs país destino y ciudad vs Lima', () => {
+		const data = loadPopulationData();
+		const madrid = data.destinations.find((d) => d.id === 'madrid')!;
+		const view = buildPopulationComparisonView(madrid, data.references);
+		expect(view.countryBars).toHaveLength(2);
+		expect(view.countryBars[0]?.label).toBe('Perú');
+		expect(view.countryBars[1]?.label).toBe('España');
+		expect(view.cityBars[0]?.label).toContain('Lima');
+		expect(view.cityBars[1]?.label).toBe('Madrid');
+	});
+
+	it('incluye distritos y fuentes deduplicadas en el pie', () => {
+		const data = loadPopulationData();
+		const madrid = data.destinations[0]!;
+		const view = buildPopulationComparisonView(madrid, data.references);
+		expect(view.districts.length).toBeGreaterThanOrEqual(2);
+		expect(view.sourcesFooter.length).toBeGreaterThan(0);
+		const keys = view.sourcesFooter.map((s) => `${s.source}-${s.year}`);
+		expect(new Set(keys).size).toBe(keys.length);
+	});
+});
+
+describe('collectSourcesFooter', () => {
+	it('elimina duplicados', () => {
+		const result = collectSourcesFooter([
+			{ source: 'INEI', year: 2022 },
+			{ source: 'INEI', year: 2022 },
+			{ source: 'INE', year: 2024 },
+		]);
+		expect(result).toHaveLength(2);
 	});
 });
 

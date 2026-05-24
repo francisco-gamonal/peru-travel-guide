@@ -1,0 +1,30 @@
+---
+import { formatPopulation } from '../lib/population';
+import type { PopulationBarItem } from '../types/population';
+
+interface Props {
+	bar: PopulationBarItem;
+}
+
+const { bar } = Astro.props;
+const barLabel = `${bar.label}: ${formatPopulation(bar.population)} habitantes`;
+---
+
+<li>
+	<div class="mb-1 flex flex-wrap items-baseline justify-between gap-2">
+		<span class="font-medium text-slate-900">{bar.label}</span>
+		<span class="text-base font-semibold tabular-nums text-sky-800">
+			{formatPopulation(bar.population)}
+		</span>
+	</div>
+	<div
+		class="h-3 w-full overflow-hidden rounded-full bg-slate-100"
+		role="img"
+		aria-label={barLabel}
+	>
+		<div
+			class="h-full rounded-full bg-sky-600 transition-all"
+			style={`width: ${bar.widthPercent}%`}
+		/>
+	</div>
+</li>

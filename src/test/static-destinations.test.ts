@@ -20,6 +20,8 @@ describe('páginas estáticas de destinos (post-build)', () => {
 		expect(html).toContain('Madrid');
 		expect(html).toContain('Clima y mejores épocas');
 		expect(html).toContain('continental mediterráneo');
+		expect(html).toContain('Por país');
+		expect(html).toContain('Por ciudad');
 	});
 
 	it('Ciudad de México en /destino/cdmx/ (regresión static output)', () => {
