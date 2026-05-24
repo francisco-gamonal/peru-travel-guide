@@ -2,23 +2,29 @@
 
 > Fases ordenadas. Criterio de salida verificable por fase.
 
-## Fase 0 — Foundation ✅ (en curso)
+## Fase 0 — Foundation ✅ Completada
 
 **Entregables:** OpenSpec, política de idioma, constitución (`specs/mission.md`, `specs/tech-stack.md`, `specs/roadmap.md`).
 
-**Criterio de salida:** Constitución validada; `openspec/config.yaml` referencia los tres archivos; cambio `add-project-constitution` listo para archivar.
+**Criterio de salida:** Constitución validada; `openspec/config.yaml` referencia los tres archivos; cambio `add-project-constitution` archivado.
+
+**Estado:** Completada (2026-05-23).
 
 ---
 
-## Fase 1 — Scaffold
+## Fase 1 — Scaffold ✅ Completada
 
 **Entregables:** Proyecto Astro 6 con TypeScript strict, Tailwind 4, pnpm; lint mínimo; README de desarrollo.
 
 **Criterio de salida:** `pnpm dev` arranca sin errores; build de producción exitoso.
 
+**OpenSpec:** Cambio `scaffold-astro-project` archivado (`openspec/changes/archive/2026-05-23-scaffold-astro-project/`). Capability `astro-app-scaffold` en `openspec/specs/`.
+
+**Estado:** Completada (2026-05-23).
+
 ---
 
-## Fase 2 — Comparación poblacional (MVP)
+## Fase 2 — Comparación poblacional (MVP) 🔄 (siguiente)
 
 **Entregables:** Flujo: usuario indica ciudad/país destino → comparación con Perú, Lima y distritos relevantes; visualización clara de habitantes.
 
