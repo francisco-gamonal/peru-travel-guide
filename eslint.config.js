@@ -4,6 +4,15 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
 	...eslintPluginAstro.configs.recommended,
 	{
-		ignores: ['dist/', '.astro/', 'node_modules/', 'openspec/', 'specs/'],
+		ignores: [
+			'dist/',
+			'.astro/',
+			'node_modules/',
+			'openspec/',
+			'specs/',
+			'coverage/',
+			'test-results/',
+			'playwright-report/',
+		],
 	},
 );

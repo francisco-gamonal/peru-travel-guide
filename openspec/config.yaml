@@ -3,9 +3,14 @@ schema: spec-driven
 context: |
   Project constitution (read before proposing or implementing):
   - specs/mission.md — product purpose, users, travel guide scope (Peru/Lima vs destination)
-  - specs/tech-stack.md — frameworks, versions, data sources, dev practices
+  - specs/tech-stack.md — frameworks, versions, data sources, dev practices, testing (Vitest, 80% coverage on src/lib, Playwright E2E)
   - specs/roadmap.md — phased delivery through Production
   Respect mission, stack, and roadmap in every change. Do not contradict without a dedicated OpenSpec change.
+
+  Testing policy (test-harness / specs/tech-stack.md):
+  - Unit tests with Vitest on src/lib/**; minimum 80% coverage (pnpm test:coverage).
+  - E2E with Playwright after static build (pnpm test:e2e); UI/route changes must not rely on pnpm dev alone.
+  - Before archiving a change that touches application code, run: pnpm build && pnpm lint && pnpm test:coverage && pnpm test:e2e (when applicable).
 
   Language policy (artifact-language-policy):
   - Write all narrative content in Spanish: explanations, motivation, impact, requirement descriptions, and WHEN/THEN scenarios.
@@ -22,13 +27,18 @@ rules:
   proposal:
     - Redactar las secciones Why, What Changes e Impact en español.
     - Mantener nombres de capabilities, cambios y rutas en inglés (kebab-case).
+    - Si el cambio añade o modifica código en `src/`, UI o rutas, mencionar impacto en tests unitarios, cobertura (80% en src/lib) y E2E cuando aplique.
   design:
     - Redactar Context, Goals, Decisions y Risks en español.
     - Citar funciones, módulos, endpoints e identificadores técnicos en inglés con backticks; no traducirlos.
+    - Incluir decisión de pruebas: qué cubre Vitest, qué cubre Playwright, y si el output es estático (validar post-build, no solo dev).
   specs:
     - Redactar descripciones de requisitos y escenarios WHEN/THEN en español; usar SHALL/MUST en español.
     - Los nombres en `### Requirement:` y `#### Scenario:` pueden estar en español.
     - Citar código, endpoints, tipos y paths en inglés entre backticks (p. ej. `GET /api/v1/export`).
+    - Preferir escenarios verificables con `pnpm test` o `pnpm test:e2e` cuando describan comportamiento de aplicación.
   tasks:
     - Redactar descripciones de tareas en español.
     - Mantener nombres de archivos, símbolos de código y comandos en inglés sin traducir.
+    - Incluir sección de verificación con `pnpm test:coverage` si hay cambios en `src/lib/`; incluir `pnpm test:e2e` si hay cambios en páginas, rutas o flujos de UI.
+    - Para sitio estático Astro, no usar solo `?query=` en `index` como única forma de estado; preferir rutas generadas (`getStaticPaths`) o documentar tests E2E post-build.

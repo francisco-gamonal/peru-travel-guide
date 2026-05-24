@@ -2,6 +2,8 @@
 
 > Fases ordenadas. Criterio de salida verificable por fase.
 
+> **Calidad transversal:** Todo cambio OpenSpec con código en `src/` debe cumplir `specs/tech-stack.md` (Vitest, cobertura ≥ 80 % en `src/lib/`, E2E Playwright post-`build`) antes de archivar. Ver capability `test-harness` tras el cambio `add-testing-practices`.
+
 ## Fase 0 — Foundation ✅ Completada
 
 **Entregables:** OpenSpec, política de idioma, constitución (`specs/mission.md`, `specs/tech-stack.md`, `specs/roadmap.md`).

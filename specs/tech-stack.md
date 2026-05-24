@@ -14,6 +14,31 @@
 | **pnpm** | `10.33.4` | `packageManager` + `engines.pnpm`; binario en `PNPM_HOME` (zsh). **No** usar npm ni Corepack pnpm 11 como flujo principal |
 | **ESLint** | `9.x` + `eslint-plugin-astro` | Script `pnpm lint`; ignora `dist/`, `.astro/`, `openspec/`, `specs/` |
 
+## Pruebas y calidad
+
+| Herramienta | Versión / umbral | Notas |
+|-------------|------------------|--------|
+| **Vitest** | `4.x` | Unit tests; `pnpm test`, `pnpm test:watch` |
+| **@vitest/coverage-v8** | `4.x` | Cobertura con `pnpm test:coverage` |
+| **Playwright** | `1.x` | E2E contra build estático; `pnpm test:e2e` (usa `preview:e2e` = `build` + `preview`) |
+
+### Cobertura mínima
+
+- **Alcance:** `src/lib/**/*.ts` (excluye `*.test.ts`).
+- **Umbral:** **≥ 80 %** en líneas, statements, branches y functions (configurado en `vitest.config.ts`).
+- **Gate recomendado** antes de archivar un cambio con código de aplicación:
+
+```bash
+pnpm test:verify
+```
+
+Equivalente: `pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static && pnpm test:e2e`
+
+### E2E y sitio estático
+
+- Las pruebas E2E MUST ejecutarse sobre el artefacto de **`pnpm build`** (no sustituir solo `pnpm dev`).
+- Casos mínimos: cada ruta `/destino/<id>/` de destinos curados muestra su ciudad; regresión CDMX ≠ Madrid.
+
 ### Compatibilidad verificada (scaffold Fase 1, 2026-05-24)
 
 | Comprobación | Resultado |
@@ -46,7 +71,7 @@ npm view @tailwindcss/vite version
 npm view pnpm version
 
 # Validación local del proyecto (desde la raíz)
-node -v && pnpm -v && pnpm install && pnpm build && pnpm lint && openspec validate scaffold-astro-project
+node -v && pnpm -v && pnpm install && pnpm test:verify
 ```
 
 ## Datos y dominio (producto)

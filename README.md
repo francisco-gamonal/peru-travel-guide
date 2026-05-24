@@ -32,21 +32,39 @@ Opcional solo si insistes en pnpm 11: `sudo apt install libatomic1`.
 ## Comandos
 
 ```bash
-pnpm dev      # servidor de desarrollo
-pnpm build    # build de producción
-pnpm preview  # previsualizar build
-pnpm lint     # ESLint (Astro + TypeScript)
+pnpm dev            # servidor de desarrollo
+pnpm build          # build de producción
+pnpm preview        # previsualizar build
+pnpm lint           # ESLint (Astro + TypeScript)
+pnpm test           # pruebas unitarias (Vitest)
+pnpm test:coverage  # unit tests + cobertura (mínimo 80 % en src/lib/)
+pnpm test:static    # rutas estáticas en dist/ (tras build; regresión CDMX)
+pnpm test:e2e       # E2E en navegador (Playwright; build + preview)
+pnpm test:verify    # gate completo (build, lint, coverage, static, e2e)
 ```
+
+### Primera vez con E2E
+
+Tras `pnpm install`, instalar el navegador y dependencias de sistema (WSL/Linux):
+
+```bash
+pnpm exec playwright install chromium
+pnpm exec playwright install-deps chromium
+```
+
+No uses `sudo pnpm` (root no tiene tu `PATH`). Si falla, instala libs con `apt` (ver `specs/tech-stack.md`).
+
+E2E corre en **headless** (sin ventana). Para ver el navegador: `pnpm exec playwright test --headed`.
 
 ## Validar el proyecto
 
 Desde la raíz, con **pnpm 10.33.4** en el PATH:
 
 ```bash
-node -v && pnpm -v && pnpm install && pnpm build && pnpm lint && openspec validate scaffold-astro-project
+node -v && pnpm -v && pnpm install && pnpm test:verify
 ```
 
-Esperado: Node `>=22.12`, pnpm `10.33.4`, build y lint sin errores, y `Change 'scaffold-astro-project' is valid`. Para el servidor de desarrollo, en otra terminal: `pnpm dev` → `http://localhost:4321/`.
+Esperado: Node `>=22.12`, pnpm `10.33.4`, build, lint, cobertura ≥ 80 % en `src/lib/` y E2E en verde. Para desarrollo interactivo: `pnpm dev` → `http://localhost:4321/`.
 
 Detalle de compatibilidad (pnpm, Vite 7, versiones fijadas): `specs/tech-stack.md`.
 
