@@ -31,6 +31,12 @@ describe('getDestinationById', () => {
 		expect(getDestinationById(data, 'cdmx')?.cityName).toBe('Ciudad de México');
 	});
 
+	it('resuelve london con Reino Unido', () => {
+		const london = getDestinationById(data, 'london');
+		expect(london?.cityName).toBe('Londres');
+		expect(london?.countryName).toBe('Reino Unido');
+	});
+
 	it('devuelve null para id inválido o vacío', () => {
 		expect(getDestinationById(data, 'no-existe')).toBeNull();
 		expect(getDestinationById(data, null)).toBeNull();

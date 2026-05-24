@@ -74,6 +74,31 @@
 			"source": "Argentina.travel (referencia agregada)",
 			"year": 2024,
 			"sourceUrl": "https://www.argentina.travel/"
+		},
+		{
+			"destinationId": "london",
+			"summary": "Londres valora la cortesía en colas y el trato reservado en transporte y espacios públicos. Para un viajero desde Perú, conviene acostumbrarse al «sorry» habitual, a las propinas opcionales en restaurantes y a circular por la izquierda en escaleras mecánicas del metro.",
+			"tips": [
+				{
+					"title": "Colas y turno",
+					"body": "Respeta el orden en paradas de autobús, cajas y barras; saltarse la fila se percibe como muy maleducado."
+				},
+				{
+					"title": "Metro y escaleras",
+					"body": "En escaleras mecánicas quédate a la derecha si no vas a caminar; usa Oyster o contactless para el TfL."
+				},
+				{
+					"title": "Propina en restaurantes",
+					"body": "A menudo se añade service charge al 12,5 %; si no, 10–12 % es habitual cuando el servicio fue bueno."
+				},
+				{
+					"title": "Horarios y reservas",
+					"body": "Reserva restaurantes populares con antelación; muchos museos funcionan mejor con entrada horaria en fines de semana."
+				}
+			],
+			"source": "VisitBritain (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.visitbritain.com/"
 		}
 	]
 }

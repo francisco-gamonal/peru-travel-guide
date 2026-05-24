@@ -7,15 +7,17 @@ import {
 } from './climate';
 
 describe('loadClimateData', () => {
-	it('carga clima para los tres destinos curados', () => {
+	it('carga clima para los destinos curados', () => {
 		const data = loadClimateData();
-		expect(data.destinations).toHaveLength(3);
+		expect(data.destinations).toHaveLength(4);
 		expect(data.destinations.map((d) => d.destinationId)).toEqual([
 			'madrid',
 			'cdmx',
 			'buenos-aires',
+			'london',
 		]);
 	});
+
 });
 
 describe('getClimateByDestinationId', () => {

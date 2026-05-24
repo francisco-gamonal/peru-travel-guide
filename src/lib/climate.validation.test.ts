@@ -136,3 +136,19 @@ describe('loadClimateData con datos inválidos', () => {
 		vi.doUnmock('../data/climate.json');
 	});
 });
+
+describe('destino london (add-destination-england)', () => {
+	// @spec DC-09
+	it('loadClimateData incluye london con resumen y ventanas recomendadas', async () => {
+		vi.resetModules();
+		vi.doUnmock('../data/climate.json');
+		const { loadClimateData, getClimateByDestinationId } = await import('./climate');
+		const data = loadClimateData();
+		const london = getClimateByDestinationId(data, 'london');
+		expect(london).toBeDefined();
+		expect(london?.summary).toMatch(/oceánico/i);
+		expect(london?.seasons.length).toBeGreaterThanOrEqual(1);
+		expect(london?.bestTimeToVisit.length).toBeGreaterThanOrEqual(1);
+		expect(london?.source).toBeTruthy();
+	});
+});

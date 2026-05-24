@@ -2,6 +2,14 @@
 
 > Generado con `pnpm changelog:generate` desde `openspec/changes/archive/*/proposal.md`.
 
+## 2026-05-24 — update-roadmap-phases-7-8
+
+- Actualizar `specs/roadmap.md`: nota transversal post-Fase 6; **Fase 7** (destino Inglaterra/Londres, pendiente); **Fase 8** (iconos y banderas con optimización de imágenes, pendiente).
+- Añadir `breaking: false` en `.openspec.yaml` del cambio.
+- Delta en `project-constitution`: requisito de que las fases pendientes del roadmap incluyan nombre propuesto del cambio OpenSpec.
+
+---
+
 ## 2026-05-24 — setup-github-production
 
 - Crear repositorio remoto en GitHub con nombre propuesto **`peru-travel-guide`** (guía de viaje con referente Perú/Lima; nombre global y descriptivo).
@@ -71,6 +79,16 @@
 - Documentar la política en `specs/tech-stack.md` y `README.md` (instalación de hooks, bypass con `--no-verify`, CI como fuente de verdad).
 - Ampliar capability `test-harness` con requisitos de hooks; actualizar `project-constitution` para que `tech-stack` describa la estrategia en tres capas.
 - **Opcional en este cambio:** workflow de GitHub Actions con `pnpm test:verify` (si no, dejar documentado para Fase 5).
+
+---
+
+## 2026-05-24 — add-destination-england
+
+- Añadir destino curado con `id` **`london`**, ciudad **Londres**, país **Reino Unido** en `src/data/destinations.json` (población ciudad y país con fuente ONS u equivalente y año).
+- Añadir bloques de clima y cultura en `src/data/climate.json` y `src/data/culture.json` para `destinationId: "london"`.
+- Generar ruta estática `/destino/london/` vía `getStaticPaths` existente.
+- Incluir Londres en el selector de destinos y en pruebas E2E/estáticas.
+- Actualizar `specs/roadmap.md`: marcar Fase 7 en curso durante apply y completada al archivar.
 
 ---
 

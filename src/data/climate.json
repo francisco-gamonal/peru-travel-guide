@@ -122,6 +122,51 @@
 			"source": "SMN Argentina (datos agregados)",
 			"year": 2024,
 			"sourceUrl": "https://www.smn.gob.ar/"
+		},
+		{
+			"destinationId": "london",
+			"summary": "Londres tiene un clima oceánico templado: inviernos suaves con muchas horas de nubosidad, veranos frescos y lluvia repartida a lo largo del año. La humedad hace sentir más el frío en invierno.",
+			"seasons": [
+				{
+					"name": "Invierno (dic–feb)",
+					"tempRangeC": "2–9 °C",
+					"rainfall": "Frecuente",
+					"description": "Días cortos y fríos; ideal para museos, teatro y cafés con abrigo e impermeable."
+				},
+				{
+					"name": "Primavera (mar–may)",
+					"tempRangeC": "6–16 °C",
+					"rainfall": "Moderada",
+					"description": "Parques en flor y más luz; lleva capas por cambios bruscos de temperatura."
+				},
+				{
+					"name": "Verano (jun–ago)",
+					"tempRangeC": "12–24 °C",
+					"rainfall": "Variable",
+					"description": "Veranos suaves; picos ocasionales de calor. Buena época para recorrer a pie con paraguas ligero."
+				},
+				{
+					"name": "Otoño (sep–nov)",
+					"tempRangeC": "8–17 °C",
+					"rainfall": "Frecuente",
+					"description": "Otoño templado antes del invierno; menos turismo que en verano escolar europeo."
+				}
+			],
+			"bestTimeToVisit": [
+				{
+					"label": "Mayo a septiembre",
+					"months": ["May", "Jun", "Jul", "Ago", "Sep"],
+					"reason": "Más horas de sol y temperaturas más cómodas para caminar la ciudad."
+				},
+				{
+					"label": "Invierno con plan indoor",
+					"months": ["Dic", "Ene", "Feb"],
+					"reason": "Menos colas en algunas atracciones; prioriza ropa impermeable y transporte cubierto."
+				}
+			],
+			"source": "Met Office UK (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.metoffice.gov.uk/"
 		}
 	]
 }

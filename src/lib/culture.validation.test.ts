@@ -81,3 +81,18 @@ describe('loadCultureData con datos inválidos', () => {
 		vi.doUnmock('../data/culture.json');
 	});
 });
+
+describe('destino london (add-destination-england)', () => {
+	// @spec CU-08
+	it('loadCultureData incluye london con al menos tres consejos', async () => {
+		vi.resetModules();
+		vi.doUnmock('../data/culture.json');
+		const { loadCultureData, getCultureByDestinationId } = await import('./culture');
+		const data = loadCultureData();
+		const london = getCultureByDestinationId(data, 'london');
+		expect(london).toBeDefined();
+		expect(london?.summary).toMatch(/Londres/i);
+		expect(london?.tips.length).toBeGreaterThanOrEqual(3);
+		expect(london?.tips.every((t) => t.title && t.body)).toBe(true);
+	});
+});

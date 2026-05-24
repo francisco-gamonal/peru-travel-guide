@@ -35,6 +35,18 @@
 			"year": 2023,
 			"citySourceUrl": "https://www.indec.gob.ar/",
 			"countrySourceUrl": "https://www.indec.gob.ar/"
+		},
+		{
+			"id": "london",
+			"cityName": "Londres",
+			"countryName": "Reino Unido",
+			"cityPopulation": 8898000,
+			"countryPopulation": 67596000,
+			"citySource": "ONS (área metropolitana de Londres)",
+			"countrySource": "ONS (Reino Unido)",
+			"year": 2023,
+			"citySourceUrl": "https://www.ons.gov.uk/",
+			"countrySourceUrl": "https://www.ons.gov.uk/"
 		}
 	]
 }

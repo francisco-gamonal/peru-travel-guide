@@ -61,3 +61,21 @@ describe('loadPopulationData con datos inválidos', () => {
 		vi.doUnmock('../data/peru-references.json');
 	});
 });
+
+describe('destino london (add-destination-england)', () => {
+	// @spec PC-15
+	it('loadPopulationData incluye london con Londres y Reino Unido', async () => {
+		vi.resetModules();
+		vi.doUnmock('../data/destinations.json');
+		vi.doUnmock('../data/peru-references.json');
+		const { loadPopulationData } = await import('./population');
+		const data = loadPopulationData();
+		const london = data.destinations.find((d) => d.id === 'london');
+		expect(london).toBeDefined();
+		expect(london?.cityName).toBe('Londres');
+		expect(london?.countryName).toBe('Reino Unido');
+		expect(london?.cityPopulation).toBeGreaterThan(0);
+		expect(london?.countryPopulation).toBeGreaterThan(0);
+		expect(london?.citySource).toMatch(/ONS/i);
+	});
+});

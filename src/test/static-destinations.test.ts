@@ -44,4 +44,14 @@ describe('páginas estáticas de destinos (post-build)', () => {
 		expect(html).toContain('Buenos Aires');
 		expect(html).toContain('voseo');
 	});
+
+	// @spec PC-15
+	it('Londres en /destino/london/', () => {
+		const html = readDistHtml('destino/london');
+		expect(html).toContain('Londres');
+		expect(html).toContain('Reino Unido');
+		expect(html).toContain('clima oceánico');
+		expect(html).toContain('Oyster');
+		expect(html).not.toContain('Próximamente: cultura');
+	});
 });

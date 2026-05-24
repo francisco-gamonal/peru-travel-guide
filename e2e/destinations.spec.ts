@@ -5,6 +5,7 @@ const destinations = [
 	{ id: 'madrid', city: 'Madrid' },
 	{ id: 'cdmx', city: 'Ciudad de México' },
 	{ id: 'buenos-aires', city: 'Buenos Aires' },
+	{ id: 'london', city: 'Londres' },
 ] as const;
 
 /** Ruta relativa al baseURL (respeta ASTRO_BASE, p. ej. /peru-travel-guide/). */
@@ -15,6 +16,17 @@ function appPath(path: string): string {
 function comparisonHeading(page: Page) {
 	return page.locator('#comparison-heading');
 }
+
+// @spec PC-16
+test('destino london muestra comparación poblacional de Londres y Reino Unido', async ({
+	page,
+}) => {
+	await page.goto(appPath('/destino/london/'));
+	await expect(page.getByText('Por país')).toBeVisible();
+	await expect(page.getByText('Por ciudad')).toBeVisible();
+	await expect(comparisonHeading(page)).toContainText('Londres');
+	await expect(page.locator('body')).toContainText('Reino Unido');
+});
 
 for (const { id, city } of destinations) {
 	test(`destino ${id} muestra ${city} en la comparación`, async ({ page }) => {
@@ -40,6 +52,15 @@ test('regresión: CDMX no muestra el encabezado de Madrid', async ({ page }) => 
 	await page.goto(appPath('/destino/cdmx/'));
 	await expect(comparisonHeading(page)).toHaveText(/Ciudad de México/);
 	await expect(comparisonHeading(page)).not.toHaveText(/^Madrid/);
+});
+
+// @spec DC-10
+test('destino london muestra clima oceánico y mejores épocas', async ({ page }) => {
+	await page.goto(appPath('/destino/london/'));
+	await expect(page.getByRole('heading', { name: 'Clima y mejores épocas' })).toBeVisible();
+	const climateSection = page.locator('section[aria-labelledby="climate-heading"]');
+	await expect(climateSection).toContainText(/clima oceánico/i);
+	await expect(climateSection).not.toContainText(/continental mediterráneo/i);
 });
 
 for (const { id, snippet } of [
@@ -73,6 +94,15 @@ test('selector actualiza el bloque climático al cambiar destino', async ({ page
 	await expect(page).toHaveURL(/\/destino\/cdmx\//);
 	await expect(climateSection).toContainText(/temporada de lluvias/i);
 	await expect(climateSection).not.toContainText(/continental mediterráneo/i);
+});
+
+// @spec CU-09
+test('destino london muestra cultura y consejos prácticos', async ({ page }) => {
+	await page.goto(appPath('/destino/london/'));
+	await expect(page.getByRole('heading', { name: 'Cultura y consejos prácticos' })).toBeVisible();
+	const cultureSection = page.locator('section[aria-labelledby="culture-heading"]');
+	await expect(cultureSection).toContainText(/Oyster/i);
+	await expect(cultureSection).not.toContainText(/Próximamente: cultura/i);
 });
 
 for (const { id, snippet } of [

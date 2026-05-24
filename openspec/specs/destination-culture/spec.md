@@ -1,5 +1,5 @@
 ---
-version: "1.0.0"
+version: "1.1.0"
 capability: destination-culture
 ---
 
@@ -74,3 +74,19 @@ La página de destino MUST comunicar en cabecera y metadatos que ofrece una guí
 
 - **WHEN** se inspecciona el HTML de `/destino/madrid/`
 - **THEN** el `<title>` o la meta description mencionan cultura o guía integral además de población y clima
+
+### Requirement: Cultura práctica para viajero en Londres
+
+El sistema MUST incluir en `src/data/culture.json` un registro con `destinationId: "london"` con `summary` y al menos **tres** `tips` prácticos para el viajero desde Perú, más `source`, `year`, `sourceUrl`.
+
+#### Scenario: CU-08 — Datos culturales de Londres en build
+
+- **ID:** `CU-08`
+- **WHEN** se ejecuta `pnpm build`
+- **THEN** los datos culturales de `london` están disponibles y pasan la validación en `src/lib/culture.ts`
+
+#### Scenario: CU-09 — Bloque cultural visible para Londres
+
+- **ID:** `CU-09`
+- **WHEN** el usuario visita `/destino/london/` en el sitio construido
+- **THEN** ve el widget de cultura con consejos específicos de Londres/Reino Unido y sin mensaje de cultura pendiente

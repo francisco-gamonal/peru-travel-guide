@@ -3,6 +3,8 @@
 > Fases ordenadas. Criterio de salida verificable por fase.
 
 > **Calidad transversal:** Todo cambio OpenSpec con código en `src/` debe cumplir `specs/tech-stack.md` (Vitest, cobertura ≥ 80 % en `src/lib/`, E2E Playwright post-`build`) antes de archivar. Ver capability `test-harness` tras el cambio `add-testing-practices`.
+>
+> **Post-Fase 6 (SDD Governance):** Cada fase nueva se implementa con un cambio OpenSpec dedicado, siguiendo `specs/sdd-conventions.md` (Scenario IDs, `## Test traceability` en `design.md`, `// @spec <ID>` en tests, `breaking:` en `.openspec.yaml`, review checklist antes de `/opsx:apply`).
 
 ## Fase 0 — Foundation ✅ Completada
 
@@ -85,3 +87,31 @@
 **OpenSpec:** Cambio `enhance-sdd-governance`. Capability `sdd-governance` en `openspec/specs/`.
 
 **Estado:** Completada (2026-05-24).
+
+---
+
+## Fase 7 — Destino Inglaterra (Londres) ✅ Completada
+
+**Entregables:** Destino curado `london` (Londres, Reino Unido) con población, clima, cultura y épocas; ruta `/destino/london/`; selector actualizado.
+
+**Criterio de salida:** `pnpm test:verify` en verde; cambio `add-destination-england` archivado con Scenario IDs y trazabilidad en tests.
+
+**OpenSpec:** Cambio `add-destination-england` archivado (`openspec/changes/archive/2026-05-24-add-destination-england/`). Capabilities `population-comparison`, `destination-climate`, `destination-culture` en `1.1.0`.
+
+**Estado:** Completada (2026-05-24).
+
+---
+
+## Fase 8 — Iconos y banderas con imágenes optimizadas ⬜ Pendiente
+
+**Entregables:** Selector de destinos y fichas usan **iconos** y **banderas** con **optimización de imágenes** en build estático (p. ej. `Image` de Astro, formatos modernos, dimensiones fijas, `loading`/`decoding` adecuados).
+
+**Criterio de salida:** Destinos curados muestran bandera/iconografía acordada sin regresión de contenido textual; `pnpm test:verify` en verde; `## Performance impact` en `design.md` según `specs/sdd-conventions.md`; cambio OpenSpec archivado con convenciones SDD.
+
+**OpenSpec:** Cambio `add-destination-visual-assets` (implementación futura). Capability sugerida: `destination-visuals`.
+
+**Notas técnicas:** Preferir SVG o pipeline Astro; `alt` en español.
+
+**Dependencia sugerida:** Tras Fase 7, o en paralelo si se unifican assets para todos los destinos.
+
+**Estado:** Pendiente.
