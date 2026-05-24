@@ -31,6 +31,26 @@ describe('lighthouse-budget (performance-budget)', () => {
 		expect(urls.some((u) => u.includes('/destino/london/'))).toBe(true);
 	});
 
+	// @spec PB-07
+	it('INP manual documentado tras spike negativo (sin gate en lighthouserc)', () => {
+		const configPath = resolve(process.cwd(), 'lighthouserc.cjs');
+		const config = readFileSync(configPath, 'utf8');
+		expect(config).not.toContain('interaction-to-next-paint');
+
+		const sddPath = resolve(process.cwd(), 'specs/sdd-conventions.md');
+		const sdd = readFileSync(sddPath, 'utf8');
+		expect(sdd).toMatch(/INP.*manual/i);
+		expect(sdd).toContain('enhance-performance-inp-ci');
+		expect(sdd).toContain('PB-07');
+
+		const specPath = resolve(
+			process.cwd(),
+			'openspec/specs/performance-budget/spec.md',
+		);
+		const spec = readFileSync(specPath, 'utf8');
+		expect(spec).toContain('PB-07');
+	});
+
 	// @spec DV-06
 	it('CI ejecuta LHCI post-build con assertions LCP/CLS', () => {
 		const ciPath = resolve(process.cwd(), '.github/workflows/ci.yml');

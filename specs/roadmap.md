@@ -142,17 +142,15 @@
 
 ---
 
-## Fase 9.5 — SDD INP en CI ⬜ Pendiente
+## Fase 9.5 — SDD INP en CI ✅ Completada
 
-**Entregables:** Assertion de **INP ≤ 200 ms** en LHCI cuando el entorno headless reporte la métrica de forma fiable; spike documentado en `design.md` de implementación; delta en `performance-budget` si aplica.
+**Entregables:** Spike LHCI documentado en `design.md`; excepción INP manual en `specs/sdd-conventions.md` y escenario **PB-07** en `performance-budget`; test `lighthouse-config.test.ts` con trazabilidad PB-07.
 
-**Criterio de salida:** Job `lighthouse` incluye INP bajo gate **o** queda documentado por qué sigue manual (complemento de Fase 7.5); cambio `enhance-performance-inp-ci` archivado.
+**Criterio de salida:** Spike confirmó que INP no es fiable en LHCI headless sobre rutas estáticas; excepción documentada (Rama B); cambio `enhance-performance-inp-ci` archivado; cierra recomendación canvas SDD #4.
 
-**OpenSpec:** Cambio propuesto `enhance-performance-inp-ci`.
+**OpenSpec:** Cambio `enhance-performance-inp-ci` archivado (`openspec/changes/archive/2026-05-24-enhance-performance-inp-ci/`). Capability `performance-budget` (`1.1.0`, PB-06/PB-07), `project-constitution` (`1.7.0`, PCO-16).
 
-**Dependencia sugerida:** Tras Fase 9 (mismo ciclo SDD post-canvas).
-
-**Estado:** Pendiente.
+**Estado:** Completada (2026-05-24).
 
 ---
 

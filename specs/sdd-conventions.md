@@ -184,7 +184,7 @@ Cambios que toquen páginas, CSS o assets MUST documentar en `design.md`:
 - Mitigación: …
 ```
 
-La medición automática en CI MUST cumplir la capability `performance-budget` en `openspec/specs/performance-budget/spec.md` (Lighthouse CI con `@lhci/cli` en `.github/workflows/ci.yml`). Umbrales con gate duro en CI: **LCP** y **CLS**; **INP** se valida manualmente en preview hasta soporte estable en LHCI headless.
+La medición automática en CI MUST cumplir la capability `performance-budget` en `openspec/specs/performance-budget/spec.md` (Lighthouse CI con `@lhci/cli` en `.github/workflows/ci.yml`). Umbrales con gate duro en CI: **LCP** y **CLS**. **INP** permanece en validación manual en preview: el spike de Fase 9.5 (`enhance-performance-inp-ci`, `design.md` § Spike) confirmó que LHCI headless sobre rutas estáticas no expone `interaction-to-next-paint` con valor numérico fiable sin interacción simulada; ver escenario **PB-07** en `performance-budget`.
 
 Para reproducir localmente:
 

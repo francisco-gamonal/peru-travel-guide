@@ -42,7 +42,7 @@ Equivalente: `pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static 
 |-------|---------|------------|
 | **pre-commit** | `pnpm lint` + `node scripts/pre-commit-openspec.mjs` | ESLint; si hay cambio activo en `openspec/changes/`, `openspec validate <name>` |
 | **pre-push** | `pnpm test:verify:push` | `build` + `lint` + `spec:traceability` + `test:coverage` + `test:static` (sin E2E) |
-| **CI / archive** | `pnpm test:verify` + job `lighthouse` | Todo lo anterior + `test:e2e`; LHCI (LCP/CLS) en workflow separado |
+| **CI / archive** | `pnpm test:verify` + job `lighthouse` | Todo lo anterior + `test:e2e`; LHCI con gate **LCP/CLS** (INP manual; ver PB-07 y spike Fase 9.5) |
 
 Scripts SDD adicionales:
 

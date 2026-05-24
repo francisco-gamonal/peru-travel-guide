@@ -95,6 +95,18 @@
 
 ---
 
+## 2026-05-24 — enhance-performance-inp-ci
+
+- **Spike** en apply: ejecutar `pnpm lhci` y registrar si el audit `interaction-to-next-paint` (INP) aparece con valor numérico estable en headless.
+- Si fiable: añadir assertion INP en `lighthouserc.cjs` usando `THRESHOLDS.inpMs` de `scripts/lighthouse-budget.cjs`.
+- Delta **`performance-budget`**: escenarios **PB-06** (gate INP en CI) y **PB-07** (documentación si INP sigue manual); posible **MODIFIED** del requisito de medición LHCI.
+- Actualizar **`specs/sdd-conventions.md`**: aclarar si INP pasa a gate duro en CI o permanece manual con razón en `design.md`.
+- Tests en `src/test/lighthouse-config.test.ts` con `// @spec PB-06` / **PB-07**.
+- Delta **`project-constitution`**: **PCO-16** — Fase 9.5 completada al archivar.
+- `breaking: false` en `.openspec.yaml`.
+
+---
+
 ## 2026-05-24 — add-testing-practices
 
 - Ampliar `specs/tech-stack.md` con stack de pruebas: **Vitest** (unit), umbral de **cobertura ≥ 80 %** en código bajo test, **Playwright** (E2E contra `preview` o artefacto estático).
