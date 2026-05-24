@@ -73,3 +73,15 @@
 **Sitio:** [francisco-gamonal.github.io/peru-travel-guide/](https://francisco-gamonal.github.io/peru-travel-guide/)
 
 **Estado:** Completada (2026-05-24).
+
+---
+
+## Fase 6 — SDD Governance ✅ Completada
+
+**Entregables:** `specs/sdd-conventions.md`; `openspec/config.yaml` con contexto ampliado; script `pnpm changelog:generate`; cabeceras `version:` en capabilities; capability `sdd-governance`; convenciones de Scenario IDs, review gate y breaking changes.
+
+**Criterio de salida:** El primer feature post-Fase 6 usa Scenario IDs en delta specs, `## Test traceability` en `design.md` y `// @spec <ID>` en tests; cambio `enhance-sdd-governance` archivado.
+
+**OpenSpec:** Cambio `enhance-sdd-governance`. Capability `sdd-governance` en `openspec/specs/`.
+
+**Estado:** Completada (2026-05-24).

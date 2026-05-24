@@ -1,3 +1,8 @@
+---
+version: "1.0.0"
+capability: astro-app-scaffold
+---
+
 # astro-app-scaffold Specification
 
 ## Purpose

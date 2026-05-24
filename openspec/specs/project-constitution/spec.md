@@ -1,3 +1,8 @@
+---
+version: "1.1.0"
+capability: project-constitution
+---
+
 # project-constitution Specification
 
 ## Purpose
@@ -5,17 +10,17 @@ TBD - created by archiving change add-project-constitution. Update Purpose after
 ## Requirements
 ### Requirement: Carpeta constitucional en la raíz del proyecto
 
-El repositorio MUST incluir el directorio `specs/` en la raíz del proyecto con los archivos `mission.md`, `tech-stack.md` y `roadmap.md` como constitución del producto bajo spec-driven development.
+El repositorio MUST incluir el directorio `specs/` en la raíz del proyecto con los archivos `mission.md`, `tech-stack.md`, `roadmap.md` y `sdd-conventions.md` como constitución del producto bajo spec-driven development.
 
 #### Scenario: Agente inicia un cambio de producto
 
-- **WHEN** un agente ejecuta `/opsx-propose` o `/opsx-apply`
-- **THEN** puede leer `specs/mission.md`, `specs/tech-stack.md` y `specs/roadmap.md` para alinear decisiones
+- **WHEN** un agente ejecuta `/opsx:propose` o `/opsx:apply`
+- **THEN** puede leer `specs/mission.md`, `specs/tech-stack.md`, `specs/roadmap.md` y `specs/sdd-conventions.md` para alinear decisiones
 
 #### Scenario: Carpeta o archivos ausentes
 
-- **WHEN** falta `specs/` en la raíz o alguno de los tres archivos tras completar este cambio
-- **THEN** el cambio `add-project-constitution` no se considera implementado
+- **WHEN** falta `specs/` en la raíz o alguno de los cuatro archivos constitucionales
+- **THEN** el repositorio no cumple la capability `project-constitution`
 
 #### Scenario: No confundir con OpenSpec capabilities
 
@@ -85,12 +90,12 @@ Los tres archivos constitucionales MUST redactarse en orden estricto: primero `s
 
 ### Requirement: Integración con config de OpenSpec
 
-`openspec/config.yaml` MUST referenciar `specs/mission.md`, `specs/tech-stack.md` y `specs/roadmap.md` en el bloque `context` sin duplicar el contenido completo de esos archivos.
+`openspec/config.yaml` MUST referenciar `specs/mission.md`, `specs/tech-stack.md`, `specs/roadmap.md` y `specs/sdd-conventions.md` en el bloque `context` sin duplicar el contenido completo de esos archivos.
 
-#### Scenario: Generación de proposal
+#### Scenario: Generación de proposal con convenciones
 
-- **WHEN** se crea un `proposal.md` de otra capability
-- **THEN** el `context` de `openspec/config.yaml` indica que se debe respetar la constitución en `specs/`
+- **WHEN** se crea un `proposal.md` de cualquier capability
+- **THEN** el `context` de `openspec/config.yaml` indica que se deben respetar tanto la constitución de producto en `specs/` como las convenciones de proceso en `specs/sdd-conventions.md`
 
 ### Requirement: Idioma de la constitución
 

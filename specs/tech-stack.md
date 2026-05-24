@@ -101,7 +101,8 @@ node -v && pnpm -v && pnpm install && pnpm test:verify
 | Práctica | Herramienta / versión |
 |----------|------------------------|
 | Spec-driven development | **OpenSpec** `1.3.1`, schema `spec-driven` |
-| Constitución del producto | `specs/mission.md`, `specs/tech-stack.md`, `specs/roadmap.md` |
+| Constitución del producto | `specs/mission.md`, `specs/tech-stack.md`, `specs/roadmap.md`, `specs/sdd-conventions.md` |
+| Convenciones SDD | `specs/sdd-conventions.md` — Scenario IDs, semver de capabilities, review gate, `breaking:` en cambios, `pnpm changelog:generate`, performance budget |
 | Scaffold aplicación | Raíz del repo: `src/`, `astro.config.mjs`, `package.json`, `pnpm-lock.yaml` |
 | Control de versiones | Git |
 | Commits | Conventional Commits |

@@ -22,7 +22,8 @@
     "test:static": "vitest run src/test/static-destinations.test.ts",
     "test:e2e": "playwright test",
     "test:verify:push": "pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static",
-    "test:verify": "pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static && pnpm test:e2e"
+    "test:verify": "pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static && pnpm test:e2e",
+    "changelog:generate": "node scripts/generate-changelog.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.0",

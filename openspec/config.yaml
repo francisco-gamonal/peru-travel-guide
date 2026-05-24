@@ -5,7 +5,8 @@ context: |
   - specs/mission.md — product purpose, users, travel guide scope (Peru/Lima vs destination)
   - specs/tech-stack.md — frameworks, versions, data sources, dev practices, testing (Vitest, 80% coverage on src/lib, Playwright E2E)
   - specs/roadmap.md — phased delivery through Production
-  Respect mission, stack, and roadmap in every change. Do not contradict without a dedicated OpenSpec change.
+  - specs/sdd-conventions.md — convenciones del proceso SDD: Scenario IDs, semver, review gate, breaking changes, changelog, performance budget
+  Respect mission, stack, roadmap, and sdd-conventions in every change. Do not contradict without a dedicated OpenSpec change.
 
   Testing policy (test-harness / specs/tech-stack.md):
   - Unit tests with Vitest on src/lib/**; minimum 80% coverage (pnpm test:coverage).

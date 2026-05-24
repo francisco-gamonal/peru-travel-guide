@@ -1,3 +1,8 @@
+---
+version: "1.0.0"
+capability: production-deploy
+---
+
 # production-deploy Specification
 
 ## Purpose

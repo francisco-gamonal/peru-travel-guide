@@ -1,3 +1,8 @@
+---
+version: "1.0.0"
+capability: artifact-language-policy
+---
+
 # artifact-language-policy Specification
 
 ## Purpose
