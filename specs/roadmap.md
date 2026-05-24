@@ -24,15 +24,15 @@
 
 ---
 
-## Fase 2 — Comparación poblacional (MVP) 🔄 (en curso)
+## Fase 2 — Comparación poblacional (MVP) ✅ Completada
 
 **Entregables:** Flujo: usuario indica ciudad/país destino → comparación con Perú, Lima y distritos relevantes; visualización clara de habitantes.
 
 **Criterio de salida:** Al menos un destino internacional de prueba con datos de población mostrados y contrastados con el referente peruano.
 
-**OpenSpec:** Cambio `add-population-comparison` (apply en curso).
+**OpenSpec:** Cambio `add-population-comparison` archivado (`openspec/changes/archive/2026-05-24-add-population-comparison/`). Capability `population-comparison` en `openspec/specs/`.
 
-**Estado:** Implementación MVP en progreso (2026-05-24).
+**Estado:** Completada (2026-05-24).
 
 ---
 
