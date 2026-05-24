@@ -1,0 +1,127 @@
+{
+	"destinations": [
+		{
+			"destinationId": "madrid",
+			"summary": "Madrid tiene un clima continental mediterráneo: inviernos frescos con algo de lluvia y veranos calurosos y secos. La amplitud térmica entre día y noche puede ser notable, sobre todo en primavera y otoño.",
+			"seasons": [
+				{
+					"name": "Invierno (dic–feb)",
+					"tempRangeC": "3–12 °C",
+					"rainfall": "Lluvias moderadas",
+					"description": "Días frescos; noches frías. Ideal para museos y vida urbana con abrigo."
+				},
+				{
+					"name": "Primavera (mar–may)",
+					"tempRangeC": "10–22 °C",
+					"rainfall": "Lluvia ocasional",
+					"description": "Temperaturas agradables y días más largos; muy popular para pasear la ciudad."
+				},
+				{
+					"name": "Verano (jun–ago)",
+					"tempRangeC": "18–35 °C",
+					"rainfall": "Poco lluvioso",
+					"description": "Veranos calurosos y secos; planifica sombra y agua a mediodía."
+				},
+				{
+					"name": "Otoño (sep–nov)",
+					"tempRangeC": "12–24 °C",
+					"rainfall": "Lluvia ligera",
+					"description": "Vuelve la calma tras el calor; buen equilibrio para turismo urbano."
+				}
+			],
+			"bestTimeToVisit": [
+				{
+					"label": "Primavera y principios de otoño",
+					"months": ["Abr", "May", "Sep", "Oct"],
+					"reason": "Temperaturas suaves para caminar y menos extremos que el verano madrileño."
+				},
+				{
+					"label": "Evitar pico de calor",
+					"months": ["Jul", "Ago"],
+					"reason": "Olas de calor frecuentes; si viajas, prioriza horarios tempranos y tarde."
+				}
+			],
+			"source": "AEMET (datos agregados para guía)",
+			"year": 2024,
+			"sourceUrl": "https://www.aemet.es/"
+		},
+		{
+			"destinationId": "cdmx",
+			"summary": "La Ciudad de México tiene clima de altitud templado: la temporada de lluvias en verano concentra aguaceros por la tarde, mientras que el invierno es más seco y las noches pueden ser frescas todo el año.",
+			"seasons": [
+				{
+					"name": "Temporada seca (nov–abr)",
+					"tempRangeC": "12–26 °C",
+					"rainfall": "Poca lluvia",
+					"description": "Días soleados y noches frescas; la época más cómoda para turismo."
+				},
+				{
+					"name": "Temporada de lluvias (may–oct)",
+					"tempRangeC": "14–27 °C",
+					"rainfall": "Lluvias por la tarde",
+					"description": "Calor húmedo con chaparrones vespertinos; lleva paraguas o impermeable ligero."
+				}
+			],
+			"bestTimeToVisit": [
+				{
+					"label": "Noviembre a abril",
+					"months": ["Nov", "Dic", "Ene", "Feb", "Mar", "Abr"],
+					"reason": "Menos lluvia y cielos más despejados para recorrer la ciudad."
+				},
+				{
+					"label": "Si viajas en verano",
+					"months": ["Jun", "Jul", "Ago"],
+					"reason": "Planifica actividades a la mañana; espera lluvia por la tarde en temporada húmeda."
+				}
+			],
+			"source": "SMN México / climatología de altitud (referencia)",
+			"year": 2024,
+			"sourceUrl": "https://smn.conagua.gob.mx/"
+		},
+		{
+			"destinationId": "buenos-aires",
+			"summary": "Buenos Aires tiene clima templado húmedo con cuatro estaciones marcadas. La humedad del Río de la Plata hace sentir más el frío en invierno y el calor en verano austral.",
+			"seasons": [
+				{
+					"name": "Verano austral (dic–feb)",
+					"tempRangeC": "20–32 °C",
+					"rainfall": "Tormentas ocasionales",
+					"description": "Calor y humedad; ideal para terrazas y eventos al aire libre con protección solar."
+				},
+				{
+					"name": "Otoño (mar–may)",
+					"tempRangeC": "14–24 °C",
+					"rainfall": "Moderada",
+					"description": "Temperaturas suaves; muy apreciado para paseos y cafés."
+				},
+				{
+					"name": "Invierno (jun–ago)",
+					"tempRangeC": "6–16 °C",
+					"rainfall": "Baja a moderada",
+					"description": "Fresco y húmedo; buena época para cultura indoor y gastronomía."
+				},
+				{
+					"name": "Primavera (sep–nov)",
+					"tempRangeC": "12–25 °C",
+					"rainfall": "Variable",
+					"description": "Jacarandas y días agradables antes del verano pleno."
+				}
+			],
+			"bestTimeToVisit": [
+				{
+					"label": "Otoño y primavera",
+					"months": ["Mar", "Abr", "May", "Sep", "Oct", "Nov"],
+					"reason": "Clima templado sin extremos del verano húmedo ni el invierno más crudo."
+				},
+				{
+					"label": "Verano austral",
+					"months": ["Ene", "Feb"],
+					"reason": "Ambiente festivo; reserva alojamiento y espera calor con humedad."
+				}
+			],
+			"source": "SMN Argentina (datos agregados)",
+			"year": 2024,
+			"sourceUrl": "https://www.smn.gob.ar/"
+		}
+	]
+}

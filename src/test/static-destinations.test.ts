@@ -18,6 +18,8 @@ describe('páginas estáticas de destinos (post-build)', () => {
 	it('Madrid en /destino/madrid/', () => {
 		const html = readDistHtml('destino/madrid');
 		expect(html).toContain('Madrid');
+		expect(html).toContain('Clima y mejores épocas');
+		expect(html).toContain('continental mediterráneo');
 	});
 
 	it('Ciudad de México en /destino/cdmx/ (regresión static output)', () => {
@@ -25,6 +27,8 @@ describe('páginas estáticas de destinos (post-build)', () => {
 		expect(html).toContain('Ciudad de México, México');
 		expect(html).toMatch(/<h2[^>]*>[\s\S]*Ciudad de México, México/);
 		expect(html).not.toMatch(/<h2[^>]*>\s*Madrid, España\s*</);
+		expect(html).toContain('temporada de lluvias');
+		expect(html).not.toContain('continental mediterráneo');
 	});
 
 	it('Buenos Aires en /destino/buenos-aires/', () => {

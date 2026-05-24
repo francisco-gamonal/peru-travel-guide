@@ -38,15 +38,19 @@
 
 ---
 
-## Fase 3 — Clima y mejores épocas 🔄 (siguiente)
+## Fase 3 — Clima y mejores épocas ✅ Completada
 
 **Entregables:** Ficha de destino con resumen climático y ventanas recomendadas para viajar.
 
 **Criterio de salida:** Misma ciudad de prueba de Fase 2 muestra clima y épocas junto a la comparación poblacional.
 
+**OpenSpec:** Cambio `add-destination-climate` archivado (`openspec/changes/archive/2026-05-24-add-destination-climate/`). Capability `destination-climate` en `openspec/specs/`.
+
+**Estado:** Completada (2026-05-24).
+
 ---
 
-## Fase 4 — Cultura y guía personal
+## Fase 4 — Cultura y guía personal 🔄 (siguiente)
 
 **Entregables:** Bloque cultural práctico para el viajero; experiencia unificada (población + clima + cultura + épocas).
 

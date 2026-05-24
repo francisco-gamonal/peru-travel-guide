@@ -1,15 +1,18 @@
 ---
+import ClimateAndSeasons from './ClimateAndSeasons.astro';
 import DestinationSelect from './DestinationSelect.astro';
 import PopulationComparison from './PopulationComparison.astro';
+import type { ClimateDestination } from '../types/climate';
 import type { Destination, PeruReference } from '../types/population';
 
 interface Props {
 	destination: Destination;
 	destinations: Destination[];
 	references: PeruReference[];
+	climate: ClimateDestination | null;
 }
 
-const { destination, destinations, references } = Astro.props;
+const { destination, destinations, references, climate } = Astro.props;
 ---
 
 <html lang="es">
@@ -20,21 +23,21 @@ const { destination, destinations, references } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta
 			name="description"
-			content={`Compara la población de ${destination.cityName} con Perú, Lima y distritos de Lima.`}
+			content={`Guía de ${destination.cityName}: comparación poblacional con Perú y Lima, clima y mejores épocas para viajar.`}
 		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>
-			{destination.cityName} vs Perú y Lima — Comparación poblacional
+			{destination.cityName} — Población, clima y mejores épocas
 		</title>
 	</head>
 	<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
 		<main class="mx-auto flex max-w-2xl flex-col gap-8 px-6 py-12">
 			<header class="flex flex-col gap-3">
 				<p class="text-sm font-medium uppercase tracking-wide text-sky-700">Guía personal de viaje</p>
-				<h1 class="text-3xl font-bold leading-tight">¿Qué tan grande es tu destino?</h1>
+				<h1 class="text-3xl font-bold leading-tight">Tu guía para {destination.cityName}</h1>
 				<p class="text-lg text-slate-700">
-					Compara la escala humana de una ciudad y su país con el referente que ya conoces:
-					<strong>Perú</strong>, la <strong>provincia de Lima</strong> y distritos de Lima.
+					Compara la escala humana con <strong>Perú</strong> y <strong>Lima</strong>, y planifica
+					cuándo viajar con el clima y las mejores épocas.
 				</p>
 			</header>
 
@@ -42,8 +45,10 @@ const { destination, destinations, references } = Astro.props;
 
 			<PopulationComparison destination={destination} references={references} />
 
+			<ClimateAndSeasons climate={climate} cityName={destination.cityName} />
+
 			<p class="text-sm text-slate-500">
-				Próximamente: clima, cultura y mejores épocas para viajar (siguientes fases del roadmap).
+				Próximamente: cultura y consejos prácticos para el viajero (siguiente fase del roadmap).
 			</p>
 		</main>
 	</body>
