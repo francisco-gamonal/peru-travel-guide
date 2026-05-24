@@ -62,8 +62,14 @@
 
 ---
 
-## Fase 5 — Production 🔄 (siguiente)
+## Fase 5 — Production ✅ Completada
 
-**Entregables:** Deploy en Vercel o Netlify; dominio (opcional); comprobación básica de rendimiento.
+**Entregables:** Deploy en GitHub Pages vía GitHub Actions; CI con `pnpm test:verify`; repositorio público `peru-travel-guide`.
 
 **Criterio de salida:** URL pública accesible; build reproducible en CI.
+
+**OpenSpec:** Cambio `setup-github-production` (archivar tras implementación). Capability `production-deploy` en `openspec/specs/`.
+
+**Sitio:** [francisco-gamonal.github.io/peru-travel-guide/](https://francisco-gamonal.github.io/peru-travel-guide/)
+
+**Estado:** Completada (2026-05-24).

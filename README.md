@@ -1,6 +1,12 @@
 # Guía de viaje (Astro)
 
+[![CI](https://github.com/francisco-gamonal/peru-travel-guide/actions/workflows/ci.yml/badge.svg)](https://github.com/francisco-gamonal/peru-travel-guide/actions/workflows/ci.yml)
+
 Web para comparar la población de destinos internacionales con el referente de **Perú** y **Lima**, y planificar viajes con contexto de clima, cultura y mejores épocas. Ver `specs/mission.md`.
+
+**Sitio publicado:** [francisco-gamonal.github.io/peru-travel-guide/](https://francisco-gamonal.github.io/peru-travel-guide/)
+
+**Repositorio:** [github.com/francisco-gamonal/peru-travel-guide](https://github.com/francisco-gamonal/peru-travel-guide)
 
 ## Requisitos
 
@@ -16,6 +22,7 @@ Versiones principales: Astro `6.3.7`, TypeScript `6.0.3`, Tailwind CSS `4.3.0`, 
 Requiere `pnpm` en el PATH (configuración habitual en zsh con `PNPM_HOME`).
 
 ```bash
+cp .env.example .env   # ajusta ASTRO_SITE si tu usuario de GitHub no es el del ejemplo
 pnpm install
 ```
 

@@ -2,5 +2,5 @@
 import { loadPopulationData } from '../lib/population';
 
 const defaultId = loadPopulationData().destinations[0]?.id ?? 'madrid';
-return Astro.redirect(`/destino/${defaultId}/`);
+return Astro.redirect(`${import.meta.env.BASE_URL}destino/${defaultId}/`);
 ---
