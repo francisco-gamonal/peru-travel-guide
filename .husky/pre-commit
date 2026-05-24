@@ -1,1 +1,2 @@
 pnpm lint
+node scripts/pre-commit-openspec.mjs

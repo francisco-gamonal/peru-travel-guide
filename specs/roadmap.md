@@ -102,6 +102,18 @@
 
 ---
 
+## Fase 7.5 — SDD Executable Governance ✅ Completada
+
+**Entregables:** Capability `performance-budget` con LHCI en CI; hook `pre-commit` con `openspec validate` condicional; script `pnpm spec:traceability` integrado en `test:verify:push` y CI; `scripts/run-lhci.mjs` (Chromium Playwright en WSL).
+
+**Criterio de salida:** Job `lighthouse` en verde en CI; `pnpm spec:traceability` pasa con cambio activo; brechas del canvas (LHCI, validate, trazabilidad ejecutable) cerradas; cambio `enhance-sdd-executable-governance` archivado.
+
+**OpenSpec:** Cambio `enhance-sdd-executable-governance` archivado. Capabilities `performance-budget` (nueva, `1.0.0`), `sdd-governance`, `test-harness`, `project-constitution` (bumps MINOR).
+
+**Estado:** Completada (2026-05-24).
+
+---
+
 ## Fase 8 — Iconos y banderas con imágenes optimizadas ⬜ Pendiente
 
 **Entregables:** Selector de destinos y fichas usan **iconos** y **banderas** con **optimización de imágenes** en build estático (p. ej. `Image` de Astro, formatos modernos, dimensiones fijas, `loading`/`decoding` adecuados).
@@ -112,6 +124,6 @@
 
 **Notas técnicas:** Preferir SVG o pipeline Astro; `alt` en español.
 
-**Dependencia sugerida:** Tras Fase 7, o en paralelo si se unifican assets para todos los destinos.
+**Dependencia sugerida:** Tras Fase 7.5 (LHCI activo); medición de regresión LCP/CLS recomendada antes y después de añadir assets visuales.
 
 **Estado:** Pendiente.

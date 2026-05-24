@@ -21,8 +21,10 @@
     "test:coverage": "vitest run --coverage src/lib",
     "test:static": "vitest run src/test/static-destinations.test.ts",
     "test:e2e": "playwright test",
-    "test:verify:push": "pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static",
-    "test:verify": "pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static && pnpm test:e2e",
+    "test:verify:push": "pnpm build && pnpm lint && pnpm spec:traceability && pnpm test:coverage && pnpm test:static",
+    "test:verify": "pnpm build && pnpm lint && pnpm spec:traceability && pnpm test:coverage && pnpm test:static && pnpm test:e2e",
+    "spec:traceability": "node scripts/verify-spec-traceability.mjs",
+    "lhci": "node scripts/run-lhci.mjs",
     "changelog:generate": "node scripts/generate-changelog.mjs"
   },
   "dependencies": {
@@ -31,6 +33,7 @@
     "tailwindcss": "4.3.0"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.14.0",
     "@eslint/js": "^9.39.1",
     "@playwright/test": "^1.58.2",
     "@types/node": "^22.15.0",

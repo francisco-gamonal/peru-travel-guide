@@ -31,3 +31,6 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
+.lighthouseci/
+# Cachés temporales de Lighthouse (LHCI local en WSL/Windows)
+**/lighthouse.[0-9]*/

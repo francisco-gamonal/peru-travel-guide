@@ -1,5 +1,5 @@
 ---
-version: "1.0.0"
+version: "1.1.0"
 capability: test-harness
 ---
 
@@ -72,11 +72,11 @@ La suite E2E MUST incluir al menos un caso que hubiera fallado con query strings
 
 ### Requirement: Hook pre-commit con lint
 
-El repositorio MUST configurar un hook Git `pre-commit` (p. ej. vía Husky) que ejecute `pnpm lint` desde la raíz y aborte el commit si el comando termina con código distinto de `0`.
+El repositorio MUST configurar un hook Git `pre-commit` (p. ej. vía Husky) que ejecute `pnpm lint` desde la raíz y aborte el commit si el comando termina con código distinto de `0`. Además, cuando exista al menos un cambio OpenSpec activo en `openspec/changes/` (excluyendo `archive/`), el hook MUST ejecutar `openspec validate <change>` para cada cambio activo y abortar el commit si alguna validación falla.
 
 #### Scenario: Commit con lint correcto
 
-- **WHEN** el desarrollador ejecuta `git commit` con cambios que pasan `pnpm lint`
+- **WHEN** el desarrollador ejecuta `git commit` con cambios que pasan `pnpm lint` y no hay cambios OpenSpec activos
 - **THEN** el hook `pre-commit` termina con código `0` y el commit se completa
 
 #### Scenario: Commit con lint fallido
@@ -84,9 +84,21 @@ El repositorio MUST configurar un hook Git `pre-commit` (p. ej. vía Husky) que 
 - **WHEN** el desarrollador ejecuta `git commit` y `pnpm lint` reporta errores
 - **THEN** el hook aborta el commit con código distinto de `0`
 
+#### Scenario: TH-11 — Commit valida cambio OpenSpec activo
+
+- **ID:** `TH-11`
+- **WHEN** el desarrollador ejecuta `git commit` y existe un cambio activo `openspec/changes/<name>/` cuyos artefactos son inválidos según `openspec validate <name>`
+- **THEN** el hook `pre-commit` aborta el commit con código distinto de `0`
+
+#### Scenario: TH-12 — Commit sin cambio activo no invoca validate
+
+- **ID:** `TH-12`
+- **WHEN** el desarrollador ejecuta `git commit` y no hay cambios activos en `openspec/changes/`
+- **THEN** el hook ejecuta solo `pnpm lint` (más pasos rápidos acordados) y no invoca `openspec validate`
+
 ### Requirement: Hook pre-push con verificación post-build sin E2E
 
-El repositorio MUST configurar un hook Git `pre-push` que ejecute `pnpm test:verify:push`, definido como `pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static`, y aborte el push si cualquier paso falla.
+El repositorio MUST configurar un hook Git `pre-push` que ejecute `pnpm test:verify:push`, definido como `pnpm build && pnpm lint && pnpm spec:traceability && pnpm test:coverage && pnpm test:static`, y aborte el push si cualquier paso falla.
 
 #### Scenario: Push con verificación exitosa
 
@@ -100,9 +112,9 @@ El repositorio MUST configurar un hook Git `pre-push` que ejecute `pnpm test:ver
 
 ### Requirement: Gate completo test:verify para CI y archive
 
-El script `pnpm test:verify` MUST seguir existiendo e incluir `pnpm test:e2e` además de los pasos de `test:verify:push`. La documentación MUST indicar que CI y el archive de cambios OpenSpec con código de aplicación usan `pnpm test:verify`, no solo `test:verify:push`.
+El script `pnpm test:verify` MUST seguir existiendo e incluir `pnpm spec:traceability` y `pnpm test:e2e` además de los pasos de `test:verify:push`. La documentación MUST indicar que CI y el archive de cambios OpenSpec con código de aplicación usan `pnpm test:verify`, no solo `test:verify:push`.
 
-El repositorio MUST incluir un archivo `.github/workflows/ci.yml` (o equivalente) que invoque `pnpm test:verify` en GitHub Actions en `pull_request` y en `push` a la rama principal, de modo que CI sea la fuente de verdad con E2E en el servidor.
+El repositorio MUST incluir un archivo `.github/workflows/ci.yml` (o equivalente) que invoque `pnpm test:verify` en GitHub Actions en `pull_request` y en `push` a la rama principal, de modo que CI sea la fuente de verdad con E2E en el servidor. Un job separado MUST ejecutar Lighthouse CI según la capability `performance-budget`.
 
 #### Scenario: Verificación completa manual o CI
 
@@ -122,3 +134,19 @@ Tras `pnpm install`, los hooks MUST quedar instalados mediante el script `prepar
 
 - **WHEN** un desarrollador clona el repo y ejecuta `pnpm install`
 - **THEN** los archivos en `.husky/` están activos para `git commit` y `git push`
+
+### Requirement: Script spec:traceability en gate de verificación
+
+El repositorio MUST exponer `"spec:traceability": "node scripts/verify-spec-traceability.mjs"` en `package.json`. Cuando exista exactamente un cambio OpenSpec activo en `openspec/changes/` (excluyendo `archive/`), `pnpm test:verify:push` y el workflow CI MUST ejecutar `pnpm spec:traceability` después de `pnpm lint` y antes o después de los tests unitarios, y MUST fallar si el script termina con código distinto de `0`.
+
+#### Scenario: TH-09 — spec:traceability en test:verify:push con cambio activo
+
+- **ID:** `TH-09`
+- **WHEN** hay un único cambio activo en `openspec/changes/` y el desarrollador ejecuta `pnpm test:verify:push`
+- **THEN** se invoca `pnpm spec:traceability` y el push hook falla si la trazabilidad está incompleta
+
+#### Scenario: TH-10 — Sin cambio activo omite trazabilidad
+
+- **ID:** `TH-10`
+- **WHEN** no hay directorios de cambio activo en `openspec/changes/` (solo `archive/` o carpeta vacía de activos)
+- **THEN** `pnpm spec:traceability` termina con código `0` sin error indicando que no hay cambio que validar

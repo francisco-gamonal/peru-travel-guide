@@ -49,6 +49,24 @@
 
 ---
 
+## 2026-05-24 — enhance-sdd-executable-governance
+
+- Crear capability **`performance-budget`**: umbrales LCP/CLS/INP alineados con `specs/sdd-conventions.md`, medidos con **Lighthouse CI** (`@lhci/cli`) contra el build estático en GitHub Actions.
+- Añadir job de **LHCI** al workflow de CI (post-`pnpm build`, rutas `/` y al menos un `/destino/<id>/` representativo).
+- Integrar **`openspec validate`** en el hook **`pre-commit`** cuando exista un cambio activo en `openspec/changes/` (no archivado); mantener `pnpm lint` como primer paso.
+- Crear script **`pnpm spec:traceability`** que verifique que los IDs referenciados en delta specs activos o en escenarios recientes tienen `// @spec <ID>` en los archivos declarados en `design.md` (alcance acotado: cambios activos + escenarios con ID explícito).
+- Actualizar **`specs/sdd-conventions.md`**: sección Performance budget enlaza a la capability `performance-budget`; flujo resumido incluye LHCI y `spec:traceability`.
+- Documentar **Fase 7.5 — SDD Executable Governance** en `specs/roadmap.md` (entre Fase 7 y Fase 8), con criterio de salida verificable en CI.
+- Añadir `breaking: false` en `.openspec.yaml` de este cambio.
+
+**Fuera de alcance (non-goals explícitos):**
+
+- Retroadaptar Scenario IDs en escenarios legacy de capabilities pre-Fase 6 (política ya fijada en `specs/sdd-conventions.md`).
+- Fase 8 — iconos y banderas (`add-destination-visual-assets`); queda como siguiente fase de producto tras completar este cambio.
+- Automatizar el review gate humano en skills (sigue siendo checklist + confirmación explícita).
+
+---
+
 ## 2026-05-24 — add-testing-practices
 
 - Ampliar `specs/tech-stack.md` con stack de pruebas: **Vitest** (unit), umbral de **cobertura ≥ 80 %** en código bajo test, **Playwright** (E2E contra `preview` o artefacto estático).

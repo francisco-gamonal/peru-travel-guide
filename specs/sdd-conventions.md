@@ -52,6 +52,7 @@ test('cambiar destino actualiza comparación', async ({ page }) => { ... });
 | `test-harness` | TH |
 | `production-deploy` | PD |
 | `sdd-governance` | SG |
+| `performance-budget` | PB |
 
 Al crear una capability nueva, registrar su prefijo en esta tabla mediante un cambio OpenSpec.
 
@@ -164,7 +165,26 @@ Cambios que toquen páginas, CSS o assets MUST documentar en `design.md`:
 - Mitigación: …
 ```
 
-La medición automática en CI (p. ej. `@lhci/cli`) queda fuera del alcance inicial; se puede añadir en un cambio futuro bajo capability `performance-budget`.
+La medición automática en CI MUST cumplir la capability `performance-budget` en `openspec/specs/performance-budget/spec.md` (Lighthouse CI con `@lhci/cli` en `.github/workflows/ci.yml`). Umbrales con gate duro en CI: **LCP** y **CLS**; **INP** se valida manualmente en preview hasta soporte estable en LHCI headless.
+
+Para reproducir localmente:
+
+```bash
+ASTRO_BASE=/peru-travel-guide/ pnpm build
+ASTRO_BASE=/peru-travel-guide/ pnpm lhci
+```
+
+---
+
+## Trazabilidad ejecutable
+
+Tras un cambio OpenSpec activo con tabla `## Test traceability` en `design.md`:
+
+```bash
+pnpm spec:traceability
+```
+
+El script verifica que cada Spec ID listado tenga `// @spec <ID>` en el archivo indicado. Se ejecuta en `pnpm test:verify:push`, CI y antes de archivar cuando hay un único cambio activo.
 
 ---
 
@@ -175,5 +195,6 @@ La medición automática en CI (p. ej. `@lhci/cli`) queda fuera del alcance inic
 3. Completar `design.md` + Review checklist + Test traceability.
 4. `/opsx:apply` — código y tests con `// @spec <ID>`.
 5. `pnpm test:verify` (si hay cambios en `src/`).
-6. `openspec validate <nombre>`.
-7. `/opsx:archive` — sync specs, bump semver, `pnpm changelog:generate`.
+6. `openspec validate <nombre>` (también en `pre-commit` si hay cambio activo).
+7. `pnpm spec:traceability` cuando la tabla de trazabilidad esté completa.
+8. `/opsx:archive` — sync specs, bump semver, `pnpm changelog:generate`.

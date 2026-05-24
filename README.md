@@ -49,15 +49,17 @@ pnpm test           # pruebas unitarias (Vitest)
 pnpm test:coverage  # unit tests + cobertura (mínimo 80 % en src/lib/)
 pnpm test:static    # rutas estáticas en dist/ (tras build; regresión CDMX)
 pnpm test:e2e       # E2E en navegador (Playwright; build + preview)
-pnpm test:verify:push  # pre-push: build, lint, coverage, static (sin E2E)
-pnpm test:verify       # gate completo (build, lint, coverage, static, e2e)
+pnpm spec:traceability  # trazabilidad // @spec vs design.md (cambio OpenSpec activo)
+pnpm test:verify:push  # pre-push: build, lint, spec:traceability, coverage, static (sin E2E)
+pnpm test:verify       # gate completo (build, lint, spec:traceability, coverage, static, e2e)
+pnpm lhci             # Lighthouse CI local (tras build; ver specs/tech-stack.md)
 ```
 
 ### Git hooks (automáticos)
 
 | Momento | Qué se ejecuta |
 |---------|----------------|
-| `git commit` | `pnpm lint` |
+| `git commit` | `pnpm lint` + `openspec validate` (si hay cambio activo en `openspec/changes/`) |
 | `git push` | `pnpm test:verify:push` |
 
 Para saltarte un hook en una emergencia: `git commit --no-verify` o `git push --no-verify` (no recomendado en flujo habitual).
@@ -94,7 +96,7 @@ Detalle de compatibilidad (pnpm, Vite 7, versiones fijadas): `specs/tech-stack.m
 | Ruta | Contenido |
 |------|-----------|
 | `src/` | Código de la aplicación Astro |
-| `specs/` | Constitución del producto (`mission.md`, `tech-stack.md`, `roadmap.md`) |
+| `specs/` | Constitución del producto (`mission.md`, `tech-stack.md`, `roadmap.md`, `sdd-conventions.md`) |
 | `openspec/` | Workflow OpenSpec (cambios, capabilities, `config.yaml`) |
 
 ## Desarrollo spec-driven

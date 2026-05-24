@@ -22,6 +22,7 @@
 | **Vitest** | `4.x` | Unit tests; `pnpm test`, `pnpm test:watch` |
 | **@vitest/coverage-v8** | `4.x` | Cobertura con `pnpm test:coverage` |
 | **Playwright** | `1.x` | E2E contra build estático; `pnpm test:e2e` (usa `preview:e2e` = `build` + `preview`) |
+| **@lhci/cli** | `0.14.x` | Lighthouse CI; job `lighthouse` en CI; `pnpm lhci` tras `pnpm build` |
 
 ### Cobertura mínima
 
@@ -39,9 +40,16 @@ Equivalente: `pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static 
 
 | Etapa | Comando | Qué valida |
 |-------|---------|------------|
-| **pre-commit** | `pnpm lint` | ESLint en el repo (rápido, segundos) |
-| **pre-push** | `pnpm test:verify:push` | `build` + `lint` + `test:coverage` + `test:static` (sin E2E) |
-| **CI / archive** | `pnpm test:verify` | Todo lo anterior + `test:e2e` |
+| **pre-commit** | `pnpm lint` + `node scripts/pre-commit-openspec.mjs` | ESLint; si hay cambio activo en `openspec/changes/`, `openspec validate <name>` |
+| **pre-push** | `pnpm test:verify:push` | `build` + `lint` + `spec:traceability` + `test:coverage` + `test:static` (sin E2E) |
+| **CI / archive** | `pnpm test:verify` + job `lighthouse` | Todo lo anterior + `test:e2e`; LHCI (LCP/CLS) en workflow separado |
+
+Scripts SDD adicionales:
+
+| Script | Uso |
+|--------|-----|
+| `pnpm spec:traceability` | Verifica `// @spec <ID>` vs tabla en `design.md` del cambio activo |
+| `pnpm lhci` | Tras `ASTRO_BASE=/peru-travel-guide/ pnpm build`; usa Chromium de Playwright vía `scripts/run-lhci.mjs`. En **WSL2** evita Chrome de Windows (`ECONNREFUSED`): `pnpm exec playwright install chromium` antes de medir. |
 
 - **Husky** en `devDependencies`; script `"prepare": "husky"` en `package.json`. Tras `pnpm install`, los hooks en `.husky/` quedan activos.
 - **`pnpm test:verify:push`:** gate local antes de subir código al remoto; no sustituye E2E.
