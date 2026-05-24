@@ -9,12 +9,9 @@ module.exports = {
 			url: previewUrls(),
 			numberOfRuns: 1,
 			settings: {
-				chromeFlags: [
-					'--no-sandbox',
-					'--disable-dev-shm-usage',
-					'--disable-gpu',
-					'--headless=new',
-				],
+				// LHCI concatena arrays con comas (flags inválidos); usar string con espacios.
+				chromeFlags:
+					'--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage --disable-gpu',
 			},
 		},
 		assert: {
