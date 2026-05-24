@@ -113,6 +113,24 @@ Antes de `/opsx:apply`, el `design.md` MUST incluir al final:
 
 El agente o implementador MUST tener todos los items marcados (`- [x]`) o confirmación explícita del autor antes de escribir código.
 
+### Estado `reviewStatus` (Fase 9+)
+
+En `.openspec.yaml` del cambio activo:
+
+```yaml
+reviewStatus: pending-review  # tras crear design.md
+# … revisión humana …
+reviewStatus: approved        # antes de tasks.md o /opsx:apply
+```
+
+Flujo:
+
+1. Tras crear `design.md`, el skill **continue** MUST setear `reviewStatus: pending-review` y **detenerse** pidiendo revisión.
+2. El autor revisa la checklist, confirma explícitamente y el agente (o el autor) actualiza `reviewStatus: approved`.
+3. Antes de `/opsx:apply`, ejecutar `pnpm spec:review-gate` (o dejar que el skill apply lo invoque). Falla si `reviewStatus !== approved` o quedan `- [ ]` en la checklist.
+
+No crear `tasks.md` ni implementar código mientras `reviewStatus` sea `pending-review` sin confirmación explícita en la sesión.
+
 ---
 
 ## Breaking changes

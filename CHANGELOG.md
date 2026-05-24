@@ -52,6 +52,19 @@
 
 ---
 
+## 2026-05-24 — enhance-sdd-review-gate
+
+- Campo opcional `reviewStatus: pending-review | approved` en `.openspec.yaml` de cambios activos (default `pending-review` cuando existe `design.md` sin aprobación).
+- Script **`pnpm spec:review-gate`** (`scripts/verify-review-gate.mjs`) que falla si hay cambio activo con `design.md` y `reviewStatus !== approved` o checklist sin marcar.
+- Actualizar skills y comandos OpenSpec: **`openspec-continue-change`** / **`opsx:continue`** — tras crear `design.md`, fijar `pending-review` y detenerse hasta aprobación; no crear `tasks.md` si sigue pendiente. **`openspec-apply-change`** / **`opsx:apply`** — invocar review gate antes de implementar.
+- Ampliar **`specs/sdd-conventions.md`**: flujo `pending-review` → confirmación humana → `approved` → `/opsx:apply`.
+- Delta **`sdd-governance`**: requisitos normativos (escenarios **SG-20**–**SG-22**).
+- Delta **`test-harness`**: script en gate documentado (**TH-11**, **TH-12**).
+- Delta **`project-constitution`**: Fase 9 completada al archivar (**PCO-15**).
+- `breaking: false` en `.openspec.yaml`.
+
+---
+
 ## 2026-05-24 — enhance-sdd-governance
 
 - Crear `specs/sdd-conventions.md`: nuevo archivo de constitución con las convenciones del proceso SDD (Scenario IDs, semver de capabilities, review gate, breaking flag, changelog, performance budget).

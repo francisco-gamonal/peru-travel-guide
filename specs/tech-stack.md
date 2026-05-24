@@ -49,6 +49,7 @@ Scripts SDD adicionales:
 | Script | Uso |
 |--------|-----|
 | `pnpm spec:traceability` | Verifica `// @spec <ID>` vs tabla en `design.md` del cambio activo |
+| `pnpm spec:review-gate` | Verifica `reviewStatus: approved` y checklist completa en `design.md` del cambio activo (omitido si no hay cambio activo o no hay `design.md`) |
 | `pnpm lhci` | Tras `ASTRO_BASE=/peru-travel-guide/ pnpm build`; usa Chromium de Playwright vía `scripts/run-lhci.mjs`. En **WSL2** evita Chrome de Windows (`ECONNREFUSED`): `pnpm exec playwright install chromium` antes de medir. |
 
 - **Husky** en `devDependencies`; script `"prepare": "husky"` en `package.json`. Tras `pnpm install`, los hooks en `.husky/` quedan activos.

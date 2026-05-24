@@ -130,17 +130,15 @@
 
 ---
 
-## Fase 9 — SDD Review gate en skills ⬜ Pendiente
+## Fase 9 — SDD Review gate en skills ✅ Completada
 
-**Entregables:** Estado `pending-review` en skills/comandos OpenSpec (`openspec-continue-change`, `openspec-apply-change`); revisión humana explícita tras `design.md` antes de `tasks.md` y código; documentación en `specs/sdd-conventions.md`.
+**Entregables:** Campo `reviewStatus` (`pending-review` | `approved`) en `.openspec.yaml`; script `pnpm spec:review-gate`; skills/comandos `continue` y `apply` actualizados (Cursor + Claude); documentación en `specs/sdd-conventions.md`.
 
-**Criterio de salida:** Flujo documentado y probado manualmente; cambio `enhance-sdd-review-gate` archivado; cierra recomendación canvas SDD #3.
+**Criterio de salida:** Flujo documentado y probado; `pnpm spec:review-gate` y tests en verde; cambio `enhance-sdd-review-gate` archivado; cierra recomendación canvas SDD #3.
 
-**OpenSpec:** Cambio propuesto `enhance-sdd-review-gate`.
+**OpenSpec:** Cambio `enhance-sdd-review-gate` archivado (`openspec/changes/archive/2026-05-24-enhance-sdd-review-gate/`). Capabilities `sdd-governance` (`1.2.0`), `test-harness` (`1.2.0`), `project-constitution` (`1.6.0`, PCO-15).
 
-**Dependencia sugerida:** Tras Fase 8; conviene antes de features de producto con UI (Fases 10–12).
-
-**Estado:** Pendiente.
+**Estado:** Completada (2026-05-24).
 
 ---
 

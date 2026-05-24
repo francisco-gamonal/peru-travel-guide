@@ -64,6 +64,12 @@ Continue working on a change by creating the next artifact.
      - Use `template` as the structure - fill in its sections
      - Apply `context` and `rules` as constraints when writing - but do NOT copy them into the file
      - Write to the output path specified in instructions
+   - **If the artifact created is `design.md`** (review gate, Fase 9+):
+     - Set or update `reviewStatus: pending-review` in `openspec/changes/<name>/.openspec.yaml`
+     - Show the `## Review checklist` to the user
+     - **STOP** — do not create `tasks.md` in the same turn; ask for explicit approval before continuing
+   - **If the next ready artifact is `tasks` and `design.md` exists**:
+     - Read `reviewStatus` from `.openspec.yaml`; if not `approved`, **STOP** unless the user explicitly approves in this session (then set `reviewStatus: approved` and mark checklist `- [x]`)
    - Show what was created and what's now unlocked
    - STOP after creating ONE artifact
 

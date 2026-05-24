@@ -24,6 +24,7 @@
     "test:verify:push": "pnpm build && pnpm lint && pnpm spec:traceability && pnpm test:coverage && pnpm test:static",
     "test:verify": "pnpm build && pnpm lint && pnpm spec:traceability && pnpm test:coverage && pnpm test:static && pnpm test:e2e",
     "spec:traceability": "node scripts/verify-spec-traceability.mjs",
+    "spec:review-gate": "node scripts/verify-review-gate.mjs",
     "lhci": "node scripts/run-lhci.mjs",
     "changelog:generate": "node scripts/generate-changelog.mjs"
   },

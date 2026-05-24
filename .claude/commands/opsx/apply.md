@@ -60,7 +60,16 @@ Implement tasks from an OpenSpec change.
    - Remaining tasks overview
    - Dynamic instruction from CLI
 
-6. **Implement tasks (loop until done or blocked)**
+6. **Review gate (Fase 9+)** — before implementing tasks:
+
+   ```bash
+   pnpm spec:review-gate
+   ```
+
+   - If exit code ≠ 0: **STOP**. Show checklist items and `reviewStatus`; request explicit user approval; update `.openspec.yaml` to `reviewStatus: approved` only after confirmation.
+   - If omitted (no active change / no `design.md`), proceed.
+
+7. **Implement tasks (loop until done or blocked)**
 
    For each pending task:
    - Show which task is being worked on
@@ -75,7 +84,7 @@ Implement tasks from an OpenSpec change.
    - Error or blocker encountered → report and wait for guidance
    - User interrupts
 
-7. **On completion or pause, show status**
+8. **On completion or pause, show status**
 
    Display:
    - Tasks completed this session
