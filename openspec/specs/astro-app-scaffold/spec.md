@@ -19,6 +19,20 @@ El repositorio MUST incluir un proyecto Astro válido en la raíz con `package.j
 - **WHEN** el desarrollador ejecuta `pnpm build`
 - **THEN** el build completa con código de salida `0`
 
+### Requirement: Build de producción estático
+
+El proyecto MUST generar un sitio estático con `pnpm build` listo para hosting en **GitHub Pages** (project site), con `site` y `base` en `astro.config.mjs` alineados al path `/peru-travel-guide/`.
+
+#### Scenario: Artefacto de build
+
+- **WHEN** se ejecuta `pnpm build` tras configurar `base` para GitHub Pages
+- **THEN** el directorio `dist/` contiene HTML y assets con rutas prefijadas correctamente para `/peru-travel-guide/`
+
+#### Scenario: Preview local sigue funcionando
+
+- **WHEN** el desarrollador ejecuta `pnpm preview` o `pnpm test:e2e` en local
+- **THEN** el sitio y las pruebas siguen siendo ejecutables sin regresión por la configuración de `base` (usar `base` coherente o documentar comando de preview con base)
+
 ### Requirement: Stack alineado con tech-stack
 
 El `package.json` MUST usar **Astro** 6.x, **TypeScript** en modo `strict`, **Tailwind CSS** 4.x integrado vía `@tailwindcss/vite`, y **pnpm** como package manager (campo `packageManager` recomendado).
