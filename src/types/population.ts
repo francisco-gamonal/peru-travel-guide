@@ -22,6 +22,8 @@ export interface Destination {
 	id: string;
 	cityName: string;
 	countryName: string;
+	/** ISO 3166-1 alpha-2 (p. ej. ES, GB). */
+	countryCode: string;
 	cityPopulation: number;
 	countryPopulation: number;
 	citySource: string;
@@ -52,6 +54,8 @@ export interface PopulationBarItem {
 	source: string;
 	year: number;
 	sourceUrl?: string;
+	/** ISO 3166-1 alpha-2; solo en barras «Por país». */
+	countryCode?: string;
 }
 
 /** Vista agrupada país → ciudad para un único widget de UI. */

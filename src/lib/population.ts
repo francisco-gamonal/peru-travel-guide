@@ -1,5 +1,6 @@
 import destinationsFile from '../data/destinations.json';
 import peruReferencesFile from '../data/peru-references.json';
+import { PERU_COUNTRY_CODE } from './flags';
 import type {
 	ComparisonRow,
 	Destination,
@@ -67,6 +68,7 @@ function parseDestination(value: unknown, index: number): Destination {
 		id,
 		cityName,
 		countryName,
+		countryCode,
 		cityPopulation,
 		countryPopulation,
 		citySource,
@@ -77,11 +79,15 @@ function parseDestination(value: unknown, index: number): Destination {
 		typeof id !== 'string' ||
 		typeof cityName !== 'string' ||
 		typeof countryName !== 'string' ||
+		typeof countryCode !== 'string' ||
 		typeof citySource !== 'string' ||
 		typeof countrySource !== 'string' ||
 		typeof year !== 'number'
 	) {
 		throw new Error(`destinations[${index}]: campos de texto o year inválidos`);
+	}
+	if (!/^[A-Z]{2}$/.test(countryCode)) {
+		throw new Error(`destinations[${index}]: countryCode debe ser ISO 3166-1 alpha-2`);
 	}
 	if (
 		typeof cityPopulation !== 'number' ||
@@ -103,6 +109,7 @@ function parseDestination(value: unknown, index: number): Destination {
 		id,
 		cityName,
 		countryName,
+		countryCode,
 		cityPopulation,
 		countryPopulation,
 		citySource,
@@ -227,6 +234,7 @@ function toBarItems(
 		source: string;
 		year: number;
 		sourceUrl?: string;
+		countryCode?: string;
 	}[],
 ): PopulationBarItem[] {
 	const maxPopulation = Math.max(...entries.map((e) => e.population), 0);
@@ -237,6 +245,7 @@ function toBarItems(
 		year: entry.year,
 		widthPercent: barWidthPercent(entry.population, maxPopulation),
 		...(entry.sourceUrl ? { sourceUrl: entry.sourceUrl } : {}),
+		...(entry.countryCode ? { countryCode: entry.countryCode } : {}),
 	}));
 }
 
@@ -264,6 +273,7 @@ export function buildPopulationComparisonView(
 			source: peru.source,
 			year: peru.year,
 			sourceUrl: peru.sourceUrl,
+			countryCode: PERU_COUNTRY_CODE,
 		},
 		{
 			label: destination.countryName,
@@ -271,6 +281,7 @@ export function buildPopulationComparisonView(
 			source: destination.countrySource,
 			year: destination.year,
 			sourceUrl: destination.countrySourceUrl,
+			countryCode: destination.countryCode,
 		},
 	]);
 

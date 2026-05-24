@@ -15,7 +15,16 @@ function readDistHtml(segment: string): string {
 }
 
 describe('páginas estáticas de destinos (post-build)', () => {
-	it('Madrid en /destino/madrid/', () => {
+	// @spec DV-03
+	it('cabecera con bandera: alt en español y dimensiones fijas', () => {
+		const html = readDistHtml('destino/london');
+		expect(html).toContain('Bandera de Reino Unido');
+		expect(html).toMatch(/width="32"/);
+		expect(html).toMatch(/height="24"/);
+	});
+
+	// @spec DV-04
+	it('Madrid en /destino/madrid/ con banderas en selector', () => {
 		const html = readDistHtml('destino/madrid');
 		expect(html).toContain('Madrid');
 		expect(html).toContain('Clima y mejores épocas');
@@ -26,6 +35,14 @@ describe('páginas estáticas de destinos (post-build)', () => {
 		expect(html).toContain('Por país');
 		expect(html).toContain('Por ciudad');
 		expect(html).not.toContain('Próximamente: cultura');
+		expect(html).toContain('Bandera de España');
+		expect(html).toMatch(/role="listbox"/);
+	});
+
+	// @spec DV-08
+	it('comparación poblacional incluye bandera de Perú', () => {
+		const html = readDistHtml('destino/madrid');
+		expect(html).toContain('Bandera del Perú');
 	});
 
 	it('Ciudad de México en /destino/cdmx/ (regresión static output)', () => {
@@ -53,5 +70,6 @@ describe('páginas estáticas de destinos (post-build)', () => {
 		expect(html).toContain('clima oceánico');
 		expect(html).toContain('Oyster');
 		expect(html).not.toContain('Próximamente: cultura');
+		expect(html).toContain('Bandera de Reino Unido');
 	});
 });

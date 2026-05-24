@@ -26,6 +26,7 @@ describe('loadPopulationData con datos inválidos', () => {
 						id: 'bad',
 						cityName: 'X',
 						countryName: 'Y',
+						countryCode: 'ES',
 						cityPopulation: -1,
 						countryPopulation: 1,
 						citySource: 's',
@@ -60,6 +61,31 @@ describe('loadPopulationData con datos inválidos', () => {
 		expect(() => loadPopulationData()).toThrow(/kind inválido/);
 		vi.doUnmock('../data/peru-references.json');
 	});
+
+	// @spec DV-02
+	it('falla si destino no tiene countryCode ISO válido', async () => {
+		vi.resetModules();
+		vi.doMock('../data/destinations.json', () => ({
+			default: {
+				destinations: [
+					{
+						id: 'bad',
+						cityName: 'X',
+						countryName: 'Y',
+						countryCode: 'esp',
+						cityPopulation: 1,
+						countryPopulation: 1,
+						citySource: 's',
+						countrySource: 's',
+						year: 2024,
+					},
+				],
+			},
+		}));
+		const { loadPopulationData } = await import('./population');
+		expect(() => loadPopulationData()).toThrow(/countryCode/);
+		vi.doUnmock('../data/destinations.json');
+	});
 });
 
 describe('destino london (add-destination-england)', () => {
@@ -77,5 +103,6 @@ describe('destino london (add-destination-england)', () => {
 		expect(london?.cityPopulation).toBeGreaterThan(0);
 		expect(london?.countryPopulation).toBeGreaterThan(0);
 		expect(london?.citySource).toMatch(/ONS/i);
+		expect(london?.countryCode).toBe('GB');
 	});
 });

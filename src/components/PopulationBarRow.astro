@@ -1,4 +1,5 @@
 ---
+import DestinationFlag from './DestinationFlag.astro';
 import { formatPopulation } from '../lib/population';
 import type { PopulationBarItem } from '../types/population';
 
@@ -12,7 +13,19 @@ const barLabel = `${bar.label}: ${formatPopulation(bar.population)} habitantes`;
 
 <li>
 	<div class="mb-1 flex flex-wrap items-baseline justify-between gap-2">
-		<span class="font-medium text-slate-900">{bar.label}</span>
+		<span class="flex items-center gap-2 font-medium text-slate-900">
+			{
+				bar.countryCode ? (
+					<DestinationFlag
+						countryCode={bar.countryCode}
+						countryName={bar.label}
+						size="sm"
+						loading="lazy"
+					/>
+				) : null
+			}
+			{bar.label}
+		</span>
 		<span class="text-base font-semibold tabular-nums text-sky-800">
 			{formatPopulation(bar.population)}
 		</span>

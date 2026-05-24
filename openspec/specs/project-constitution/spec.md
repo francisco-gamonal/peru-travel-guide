@@ -1,5 +1,5 @@
 ---
-version: "1.3.0"
+version: "1.4.0"
 capability: project-constitution
 ---
 
@@ -146,4 +146,14 @@ El archivo `specs/roadmap.md` MUST documentar la **Fase 7.5 — SDD Executable G
 - **ID:** `PCO-12`
 - **WHEN** se evalúa si la Fase 7.5 está completa
 - **THEN** el criterio incluye job LHCI en verde en CI, hook pre-commit con validate condicional documentado, y `pnpm spec:traceability` integrado en `test:verify:push`/CI cuando hay cambio activo
+
+### Requirement: Fase 8 completada en roadmap
+
+El archivo `specs/roadmap.md` MUST documentar la **Fase 8 — Iconos y banderas con imágenes optimizadas** como completada al archivar el cambio `add-destination-visual-assets`, con referencia a la capability `destination-visuals` en `openspec/specs/`.
+
+#### Scenario: PCO-13 — Fase 8 completada tras archivar visual assets
+
+- **ID:** `PCO-13`
+- **WHEN** se archiva el cambio `add-destination-visual-assets` y se revisa `specs/roadmap.md`
+- **THEN** la Fase 8 aparece como completada con fecha, criterio de salida cumplido (LHCI + `pnpm test:verify`) y enlace al archive OpenSpec correspondiente
 

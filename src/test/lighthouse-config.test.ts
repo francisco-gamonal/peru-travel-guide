@@ -30,4 +30,16 @@ describe('lighthouse-budget (performance-budget)', () => {
 		expect(urls.some((u) => u.includes('/peru-travel-guide/'))).toBe(true);
 		expect(urls.some((u) => u.includes('/destino/london/'))).toBe(true);
 	});
+
+	// @spec DV-06
+	it('CI ejecuta LHCI post-build con assertions LCP/CLS', () => {
+		const ciPath = resolve(process.cwd(), '.github/workflows/ci.yml');
+		const ci = readFileSync(ciPath, 'utf8');
+		expect(ci).toContain('lighthouse:');
+		expect(ci).toContain('pnpm lhci');
+		const configPath = resolve(process.cwd(), 'lighthouserc.cjs');
+		const config = readFileSync(configPath, 'utf8');
+		expect(config).toContain('largest-contentful-paint');
+		expect(config).toContain('cumulative-layout-shift');
+	});
 });

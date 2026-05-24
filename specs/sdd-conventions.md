@@ -53,6 +53,7 @@ test('cambiar destino actualiza comparación', async ({ page }) => { ... });
 | `production-deploy` | PD |
 | `sdd-governance` | SG |
 | `performance-budget` | PB |
+| `destination-visuals` | DV |
 
 Al crear una capability nueva, registrar su prefijo en esta tabla mediante un cambio OpenSpec.
 

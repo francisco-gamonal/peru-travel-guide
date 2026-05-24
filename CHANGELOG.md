@@ -100,6 +100,17 @@
 
 ---
 
+## 2026-05-24 — add-destination-visual-assets
+
+- Añadir capability **`destination-visuals`**: banderas de país por destino curado **y bandera de Perú** como referente en comparación poblacional, assets optimizados en build estático y `alt` en español.
+- Extender el modelo de datos con código ISO de país (p. ej. `countryCode`) para mapear banderas de forma estable.
+- Mostrar bandera en la cabecera de la ficha (`ComparisonLayout`), en el selector de destinos (`DestinationSelect`) y junto a **Perú** en el widget de comparación (`PopulationComparison` / `PopulationBarRow`).
+- Incorporar SVGs (o pipeline `astro:assets` si se usan raster) bajo `src/assets/flags/` con dimensiones fijas y `loading`/`decoding` adecuados.
+- Actualizar `specs/roadmap.md`: marcar Fase 8 completada al archivar.
+- Registrar prefijo **`DV`** en `specs/sdd-conventions.md` para la nueva capability.
+
+---
+
 ## 2026-05-24 — add-destination-england
 
 - Añadir destino curado con `id` **`london`**, ciudad **Londres**, país **Reino Unido** en `src/data/destinations.json` (población ciudad y país con fuente ONS u equivalente y año).

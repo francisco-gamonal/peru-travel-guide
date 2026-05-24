@@ -1,0 +1,27 @@
+---
+import { formatFlagAlt, getFlagAsset, getFlagDimensions, type FlagSize } from '../lib/flags';
+
+interface Props {
+	countryCode: string;
+	countryName: string;
+	size?: FlagSize;
+	loading?: 'lazy' | 'eager';
+	fetchpriority?: 'high' | 'auto';
+}
+
+const { countryCode, countryName, size = 'sm', loading = 'lazy', fetchpriority } = Astro.props;
+const src = getFlagAsset(countryCode);
+const { width, height } = getFlagDimensions(size);
+const alt = formatFlagAlt(countryName);
+---
+
+<img
+	src={src}
+	alt={alt}
+	width={width}
+	height={height}
+	class="inline-block shrink-0 rounded-sm border border-slate-200 object-cover"
+	loading={loading}
+	decoding="async"
+	fetchpriority={fetchpriority}
+/>

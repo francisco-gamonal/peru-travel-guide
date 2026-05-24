@@ -119,6 +119,17 @@ describe('buildPopulationComparisonView', () => {
 		expect(view.cityBars[1]?.label).toBe('Madrid');
 	});
 
+	// @spec DV-07
+	it('asigna countryCode PE y del destino en barras por país', () => {
+		const data = loadPopulationData();
+		const london = data.destinations.find((d) => d.id === 'london')!;
+		const view = buildPopulationComparisonView(london, data.references);
+		expect(view.countryBars[0]?.countryCode).toBe('PE');
+		expect(view.countryBars[1]?.countryCode).toBe('GB');
+		expect(view.cityBars[0]?.countryCode).toBeUndefined();
+		expect(view.cityBars[1]?.countryCode).toBeUndefined();
+	});
+
 	it('incluye distritos y fuentes deduplicadas en el pie', () => {
 		const data = loadPopulationData();
 		const madrid = data.destinations[0]!;

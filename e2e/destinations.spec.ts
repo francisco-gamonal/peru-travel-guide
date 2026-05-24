@@ -13,6 +13,14 @@ function appPath(path: string): string {
 	return path.replace(/^\//, '');
 }
 
+function destinationOption(page: Page, name: RegExp) {
+	return page.getByRole('option', { name });
+}
+
+async function selectDestination(page: Page, name: RegExp) {
+	await destinationOption(page, name).click();
+}
+
 function comparisonHeading(page: Page) {
 	return page.locator('#comparison-heading');
 }
@@ -80,9 +88,32 @@ test('selector navega al cambiar destino sin botón Comparar', async ({ page }) 
 	await page.goto(appPath('/destino/madrid/'));
 	await expect(page.getByRole('button', { name: 'Comparar' })).toHaveCount(0);
 
-	await page.selectOption('#destination', 'cdmx');
+	await selectDestination(page, /Ciudad de México, México/);
 	await expect(page).toHaveURL(/\/destino\/cdmx\//);
 	await expect(comparisonHeading(page)).toHaveText(/Ciudad de México/);
+});
+
+// @spec DV-05
+test('selector muestra banderas y actualiza cabecera al cambiar destino', async ({ page }) => {
+	await page.goto(appPath('/destino/madrid/'));
+
+	await expect(
+		page.locator('header').getByRole('img', { name: 'Bandera de España' }),
+	).toBeVisible();
+	await expect(
+		page
+			.getByRole('listbox')
+			.getByRole('option', { name: /Madrid, España/ })
+			.getByRole('img', { name: 'Bandera de España' }),
+	).toBeVisible();
+	await expect(page.getByRole('img', { name: 'Bandera del Perú' })).toBeVisible();
+
+	await selectDestination(page, /Londres, Reino Unido/);
+	await expect(page).toHaveURL(/\/destino\/london\//);
+	await expect(
+		page.locator('header').getByRole('img', { name: 'Bandera de Reino Unido' }),
+	).toBeVisible();
+	await expect(page.getByRole('heading', { level: 1 })).toContainText('Londres');
 });
 
 test('selector actualiza el bloque climático al cambiar destino', async ({ page }) => {
@@ -90,7 +121,7 @@ test('selector actualiza el bloque climático al cambiar destino', async ({ page
 	const climateSection = page.locator('section[aria-labelledby="climate-heading"]');
 	await expect(climateSection).toContainText(/continental mediterráneo/i);
 
-	await page.selectOption('#destination', 'cdmx');
+	await selectDestination(page, /Ciudad de México, México/);
 	await expect(page).toHaveURL(/\/destino\/cdmx\//);
 	await expect(climateSection).toContainText(/temporada de lluvias/i);
 	await expect(climateSection).not.toContainText(/continental mediterráneo/i);
@@ -128,7 +159,7 @@ test('selector actualiza el bloque cultural al cambiar destino', async ({ page }
 	const cultureSection = page.locator('section[aria-labelledby="culture-heading"]');
 	await expect(cultureSection).toContainText(/sobremesa/i);
 
-	await page.selectOption('#destination', 'cdmx');
+	await selectDestination(page, /Ciudad de México, México/);
 	await expect(page).toHaveURL(/\/destino\/cdmx\//);
 	await expect(cultureSection).toContainText(/propina/i);
 	await expect(cultureSection).not.toContainText(/sobremesa/i);

@@ -114,16 +114,14 @@
 
 ---
 
-## Fase 8 — Iconos y banderas con imágenes optimizadas ⬜ Pendiente
+## Fase 8 — Iconos y banderas con imágenes optimizadas ✅ Completada
 
-**Entregables:** Selector de destinos y fichas usan **iconos** y **banderas** con **optimización de imágenes** en build estático (p. ej. `Image` de Astro, formatos modernos, dimensiones fijas, `loading`/`decoding` adecuados).
+**Entregables:** Selector de destinos y fichas con **banderas** optimizadas (SVG en build estático); **bandera de Perú** en la comparación poblacional «Por país»; campo `countryCode` en destinos curados; componente `DestinationFlag.astro`.
 
-**Criterio de salida:** Destinos curados muestran bandera/iconografía acordada sin regresión de contenido textual; `pnpm test:verify` en verde; `## Performance impact` en `design.md` según `specs/sdd-conventions.md`; cambio OpenSpec archivado con convenciones SDD.
+**Criterio de salida:** `pnpm test:verify` en verde; job `lighthouse` sin regresión LCP/CLS; cambio `add-destination-visual-assets` archivado con convenciones SDD (`DV-*`, trazabilidad).
 
-**OpenSpec:** Cambio `add-destination-visual-assets` (implementación futura). Capability sugerida: `destination-visuals`.
+**OpenSpec:** Cambio `add-destination-visual-assets` archivado (`openspec/changes/archive/2026-05-24-add-destination-visual-assets/`). Capability `destination-visuals` en `openspec/specs/` (`1.0.0`).
 
-**Notas técnicas:** Preferir SVG o pipeline Astro; `alt` en español.
+**Notas técnicas:** SVG importados desde `src/assets/flags/`; `alt` en español; selector accesible con `role="listbox"`.
 
-**Dependencia sugerida:** Tras Fase 7.5 (LHCI activo); medición de regresión LCP/CLS recomendada antes y después de añadir assets visuales.
-
-**Estado:** Pendiente.
+**Estado:** Completada (2026-05-24).
