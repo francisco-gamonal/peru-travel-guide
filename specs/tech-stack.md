@@ -13,6 +13,7 @@
 | **Node.js** | `>=22.12.0` | `engines` en `package.json`; probado con Node 24.x |
 | **pnpm** | `10.33.4` | `packageManager` + `engines.pnpm`; binario en `PNPM_HOME` (zsh). **No** usar npm ni Corepack pnpm 11 como flujo principal |
 | **ESLint** | `9.x` + `eslint-plugin-astro` | Script `pnpm lint`; ignora `dist/`, `.astro/`, `openspec/`, `specs/` |
+| **Husky** | `9.x` | Hooks `pre-commit` / `pre-push`; ver sección Git hooks |
 
 ## Pruebas y calidad
 
@@ -33,6 +34,19 @@ pnpm test:verify
 ```
 
 Equivalente: `pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static && pnpm test:e2e`
+
+### Git hooks (Husky)
+
+| Etapa | Comando | Qué valida |
+|-------|---------|------------|
+| **pre-commit** | `pnpm lint` | ESLint en el repo (rápido, segundos) |
+| **pre-push** | `pnpm test:verify:push` | `build` + `lint` + `test:coverage` + `test:static` (sin E2E) |
+| **CI / archive** | `pnpm test:verify` | Todo lo anterior + `test:e2e` |
+
+- **Husky** en `devDependencies`; script `"prepare": "husky"` en `package.json`. Tras `pnpm install`, los hooks en `.husky/` quedan activos.
+- **`pnpm test:verify:push`:** gate local antes de subir código al remoto; no sustituye E2E.
+- **`--no-verify`:** puede saltarse hooks en `commit`/`push`; la **fuente de verdad** en equipo es CI obligatorio en ramas protegidas (workflow previsto en **Fase 5 — Production**, aún no en el repo).
+- Archivar un cambio OpenSpec con código en `src/` sigue exigiendo `pnpm test:verify` manual o en CI.
 
 ### E2E y sitio estático
 

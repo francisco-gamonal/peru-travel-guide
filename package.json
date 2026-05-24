@@ -9,6 +9,7 @@
     "pnpm": "10.33.4"
   },
   "scripts": {
+    "prepare": "husky",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -20,6 +21,7 @@
     "test:coverage": "vitest run --coverage src/lib",
     "test:static": "vitest run src/test/static-destinations.test.ts",
     "test:e2e": "playwright test",
+    "test:verify:push": "pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static",
     "test:verify": "pnpm build && pnpm lint && pnpm test:coverage && pnpm test:static && pnpm test:e2e"
   },
   "dependencies": {
@@ -34,6 +36,7 @@
     "@vitest/coverage-v8": "^4.0.18",
     "eslint": "^9.39.1",
     "eslint-plugin-astro": "^1.5.0",
+    "husky": "^9.1.7",
     "typescript": "6.0.3",
     "typescript-eslint": "^8.46.4",
     "vitest": "^4.0.18"

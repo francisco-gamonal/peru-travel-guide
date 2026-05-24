@@ -19,6 +19,8 @@ Requiere `pnpm` en el PATH (configuración habitual en zsh con `PNPM_HOME`).
 pnpm install
 ```
 
+Eso instala dependencias y activa **Git hooks** (Husky) para `pre-commit` y `pre-push`.
+
 ### Si aparece `libatomic.so.1` con pnpm 11.x
 
 Ese error viene del binario **pnpm 11** (p. ej. vía Corepack). Este proyecto usa **pnpm@10.33.4** (`packageManager` en `package.json`). Opciones recomendadas:
@@ -40,8 +42,20 @@ pnpm test           # pruebas unitarias (Vitest)
 pnpm test:coverage  # unit tests + cobertura (mínimo 80 % en src/lib/)
 pnpm test:static    # rutas estáticas en dist/ (tras build; regresión CDMX)
 pnpm test:e2e       # E2E en navegador (Playwright; build + preview)
-pnpm test:verify    # gate completo (build, lint, coverage, static, e2e)
+pnpm test:verify:push  # pre-push: build, lint, coverage, static (sin E2E)
+pnpm test:verify       # gate completo (build, lint, coverage, static, e2e)
 ```
+
+### Git hooks (automáticos)
+
+| Momento | Qué se ejecuta |
+|---------|----------------|
+| `git commit` | `pnpm lint` |
+| `git push` | `pnpm test:verify:push` |
+
+Para saltarte un hook en una emergencia: `git commit --no-verify` o `git push --no-verify` (no recomendado en flujo habitual).
+
+Ejecuta **`pnpm test:verify`** manualmente antes de archivar un cambio OpenSpec o cuando quieras validar E2E sin hacer push.
 
 ### Primera vez con E2E
 
