@@ -5,6 +5,8 @@
 > **Calidad transversal:** Todo cambio OpenSpec con código en `src/` debe cumplir `specs/tech-stack.md` (Vitest, cobertura ≥ 80 % en `src/lib/`, E2E Playwright post-`build`) antes de archivar. Ver capability `test-harness` tras el cambio `add-testing-practices`.
 >
 > **Post-Fase 6 (SDD Governance):** Cada fase nueva se implementa con un cambio OpenSpec dedicado, siguiendo `specs/sdd-conventions.md` (Scenario IDs, `## Test traceability` en `design.md`, `// @spec <ID>` en tests, `breaking:` en `.openspec.yaml`, review checklist antes de `/opsx:apply`).
+>
+> **Post-Fase 8 (backlog planificado):** Orden sugerido **Fase 9 → 9.5 (SDD) → 10–12 (producto) → 13 (retroadaptación SDD)**. Brechas residuales del análisis SDD (canvas, mayo 2026): review gate en skills (#3), INP en CI (#4), trazabilidad legacy; gaps de producto vs `specs/mission.md`: home, más destinos, entrada libre de ciudad.
 
 ## Fase 0 — Foundation ✅ Completada
 
@@ -125,3 +127,85 @@
 **Notas técnicas:** SVG importados desde `src/assets/flags/`; `alt` en español; selector accesible con `role="listbox"`.
 
 **Estado:** Completada (2026-05-24).
+
+---
+
+## Fase 9 — SDD Review gate en skills ⬜ Pendiente
+
+**Entregables:** Estado `pending-review` en skills/comandos OpenSpec (`openspec-continue-change`, `openspec-apply-change`); revisión humana explícita tras `design.md` antes de `tasks.md` y código; documentación en `specs/sdd-conventions.md`.
+
+**Criterio de salida:** Flujo documentado y probado manualmente; cambio `enhance-sdd-review-gate` archivado; cierra recomendación canvas SDD #3.
+
+**OpenSpec:** Cambio propuesto `enhance-sdd-review-gate`.
+
+**Dependencia sugerida:** Tras Fase 8; conviene antes de features de producto con UI (Fases 10–12).
+
+**Estado:** Pendiente.
+
+---
+
+## Fase 9.5 — SDD INP en CI ⬜ Pendiente
+
+**Entregables:** Assertion de **INP ≤ 200 ms** en LHCI cuando el entorno headless reporte la métrica de forma fiable; spike documentado en `design.md` de implementación; delta en `performance-budget` si aplica.
+
+**Criterio de salida:** Job `lighthouse` incluye INP bajo gate **o** queda documentado por qué sigue manual (complemento de Fase 7.5); cambio `enhance-performance-inp-ci` archivado.
+
+**OpenSpec:** Cambio propuesto `enhance-performance-inp-ci`.
+
+**Dependencia sugerida:** Tras Fase 9 (mismo ciclo SDD post-canvas).
+
+**Estado:** Pendiente.
+
+---
+
+## Fase 10 — Destinos curados París, Tokio, Nueva York ⬜ Pendiente
+
+**Entregables:** Tres destinos curados (`paris`, `tokyo`, `new-york`) con población, clima, cultura y épocas; banderas `FR`, `JP`, `US`; rutas `/destino/paris/`, `/destino/tokyo/`, `/destino/new-york/`; selector actualizado.
+
+**Criterio de salida:** `pnpm test:verify` en verde; job `lighthouse` sin regresión; cambio `add-curated-destinations-paris-tokyo-nyc` archivado con Scenario IDs y trazabilidad.
+
+**OpenSpec:** Cambio propuesto `add-curated-destinations-paris-tokyo-nyc`. Reutiliza patrón Fase 7 + banderas Fase 8.
+
+**Estado:** Pendiente.
+
+---
+
+## Fase 11 — Landing / home de guía ⬜ Pendiente
+
+**Entregables:** Página `/` con propósito claro (guía personal, referente peruano); enlaces a destinos curados con banderas; sin depender solo de redirect a un destino por defecto.
+
+**Criterio de salida:** E2E de home en verde; `pnpm test:verify`; cambio `add-travel-guide-home` archivado; `## Performance impact` en `design.md`.
+
+**OpenSpec:** Cambio propuesto `add-travel-guide-home`.
+
+**Dependencia sugerida:** Tras Fase 10 (más destinos enlazables desde home).
+
+**Estado:** Pendiente.
+
+---
+
+## Fase 12 — Entrada libre de ciudad ⬜ Pendiente
+
+**Entregables:** UX de búsqueda o input para indicar ciudad/país destino; validación de entrada; cierre parcial del gap vs `specs/mission.md` (MVP acotado en el cambio de implementación).
+
+**Criterio de salida:** Flujo E2E demostrable; `pnpm test:verify`; cambio `add-destination-search` archivado.
+
+**OpenSpec:** Cambio propuesto `add-destination-search`.
+
+**Dependencia sugerida:** Tras Fase 11; mayor complejidad que destinos curados.
+
+**Estado:** Pendiente.
+
+---
+
+## Fase 13 — SDD Retroadaptación Scenario IDs legacy ⬜ Pendiente (deuda técnica opcional)
+
+**Entregables:** Identificadores `**ID:**` en escenarios legacy de `openspec/specs/` pre-Fase 6 (~15 escenarios sin ID en capabilities como `population-comparison`, `destination-climate`, etc.); sin modificar `openspec/changes/archive/`.
+
+**Criterio de salida:** Specs principales con IDs coherentes con prefijos de `specs/sdd-conventions.md`; cambio `retroadapt-legacy-scenario-ids` archivado. Excepción planificada a la política «no retroadaptar» de `specs/sdd-conventions.md`.
+
+**OpenSpec:** Cambio propuesto `retroadapt-legacy-scenario-ids`.
+
+**Dependencia sugerida:** Al final del ciclo (después de Fases 10–12); prioridad baja, no bloquea producto.
+
+**Estado:** Pendiente (opcional).

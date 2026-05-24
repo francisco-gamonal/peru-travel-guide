@@ -2,6 +2,21 @@
 
 > Generado con `pnpm changelog:generate` desde `openspec/changes/archive/*/proposal.md`.
 
+## 2026-05-24 — update-roadmap-phases-9-plus
+
+- Actualizar `specs/roadmap.md` con fases **pendientes** documentadas (numeración secuencial tras Fase 8 ✅, siguiendo el patrón 7 / 7.5):
+  - **Fase 9 — SDD Executable Governance (review gate)** — Review gate en skills (`enhance-sdd-review-gate`); cierra recomendación canvas #3.
+  - **Fase 9.5 — SDD Performance (INP en CI)** — INP en CI cuando LHCI headless sea fiable (`enhance-performance-inp-ci`); complemento de `performance-budget`.
+  - **Fase 10 — Más destinos curados** — París, Tokio, Nueva York (`add-curated-destinations-paris-tokyo-nyc`).
+  - **Fase 11 — Landing / home de guía** — Página `/` con propósito (`add-travel-guide-home`).
+  - **Fase 12 — Entrada libre de ciudad** — Búsqueda/input (`add-destination-search`); gap vs `mission.md`.
+  - **Fase 13 — SDD Retroadaptación legacy** — Scenario IDs en escenarios legacy de `openspec/specs/` (`retroadapt-legacy-scenario-ids`); al final del ciclo, deuda técnica opcional.
+- Añadir nota transversal post-Fase 8: orden sugerido **9 → 9.5 → 10–12 → 13**.
+- Delta en `project-constitution`: requisito de que el roadmap documente fases 9–13 pendientes tras Fase 8.
+- Añadir `breaking: false` en `.openspec.yaml`.
+
+---
+
 ## 2026-05-24 — update-roadmap-phases-7-8
 
 - Actualizar `specs/roadmap.md`: nota transversal post-Fase 6; **Fase 7** (destino Inglaterra/Londres, pendiente); **Fase 8** (iconos y banderas con optimización de imágenes, pendiente).
