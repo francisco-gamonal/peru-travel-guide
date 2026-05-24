@@ -69,3 +69,32 @@ test('selector actualiza el bloque climático al cambiar destino', async ({ page
 	await expect(climateSection).toContainText(/temporada de lluvias/i);
 	await expect(climateSection).not.toContainText(/continental mediterráneo/i);
 });
+
+for (const { id, snippet } of [
+	{ id: 'madrid', snippet: /sobremesa/i },
+	{ id: 'cdmx', snippet: /propina/i },
+	{ id: 'buenos-aires', snippet: /voseo/i },
+] as const) {
+	test(`destino ${id} muestra cultura y consejos prácticos`, async ({ page }) => {
+		await page.goto(`/destino/${id}/`);
+		await expect(page.getByRole('heading', { name: 'Cultura y consejos prácticos' })).toBeVisible();
+		const cultureSection = page.locator('section[aria-labelledby="culture-heading"]');
+		await expect(cultureSection).toContainText(snippet);
+	});
+}
+
+test('no muestra aviso de cultura pendiente en destinos curados', async ({ page }) => {
+	await page.goto('/destino/madrid/');
+	await expect(page.getByText(/Próximamente: cultura/i)).toHaveCount(0);
+});
+
+test('selector actualiza el bloque cultural al cambiar destino', async ({ page }) => {
+	await page.goto('/destino/madrid/');
+	const cultureSection = page.locator('section[aria-labelledby="culture-heading"]');
+	await expect(cultureSection).toContainText(/sobremesa/i);
+
+	await page.selectOption('#destination', 'cdmx');
+	await expect(page).toHaveURL(/\/destino\/cdmx\//);
+	await expect(cultureSection).toContainText(/propina/i);
+	await expect(cultureSection).not.toContainText(/sobremesa/i);
+});

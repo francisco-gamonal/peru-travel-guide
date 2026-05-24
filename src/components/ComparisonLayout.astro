@@ -1,8 +1,10 @@
 ---
 import ClimateAndSeasons from './ClimateAndSeasons.astro';
+import CultureGuide from './CultureGuide.astro';
 import DestinationSelect from './DestinationSelect.astro';
 import PopulationComparison from './PopulationComparison.astro';
 import type { ClimateDestination } from '../types/climate';
+import type { CultureDestination } from '../types/culture';
 import type { Destination, PeruReference } from '../types/population';
 
 interface Props {
@@ -10,9 +12,10 @@ interface Props {
 	destinations: Destination[];
 	references: PeruReference[];
 	climate: ClimateDestination | null;
+	culture: CultureDestination | null;
 }
 
-const { destination, destinations, references, climate } = Astro.props;
+const { destination, destinations, references, climate, culture } = Astro.props;
 ---
 
 <html lang="es">
@@ -23,11 +26,11 @@ const { destination, destinations, references, climate } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta
 			name="description"
-			content={`Guía de ${destination.cityName}: comparación poblacional con Perú y Lima, clima y mejores épocas para viajar.`}
+			content={`Guía personal de ${destination.cityName}: población con Perú y Lima, clima, mejores épocas y consejos culturales para viajar.`}
 		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>
-			{destination.cityName} — Población, clima y mejores épocas
+			{destination.cityName} — Guía de población, clima y cultura
 		</title>
 	</head>
 	<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
@@ -36,8 +39,8 @@ const { destination, destinations, references, climate } = Astro.props;
 				<p class="text-sm font-medium uppercase tracking-wide text-sky-700">Guía personal de viaje</p>
 				<h1 class="text-3xl font-bold leading-tight">Tu guía para {destination.cityName}</h1>
 				<p class="text-lg text-slate-700">
-					Compara la escala humana con <strong>Perú</strong> y <strong>Lima</strong>, y planifica
-					cuándo viajar con el clima y las mejores épocas.
+					Compara la escala humana con <strong>Perú</strong> y <strong>Lima</strong>, planifica el
+					clima y las mejores épocas, y conoce consejos culturales para tu viaje.
 				</p>
 			</header>
 
@@ -47,9 +50,7 @@ const { destination, destinations, references, climate } = Astro.props;
 
 			<ClimateAndSeasons climate={climate} cityName={destination.cityName} />
 
-			<p class="text-sm text-slate-500">
-				Próximamente: cultura y consejos prácticos para el viajero (siguiente fase del roadmap).
-			</p>
+			<CultureGuide culture={culture} cityName={destination.cityName} />
 		</main>
 	</body>
 </html>

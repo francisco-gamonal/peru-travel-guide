@@ -2,11 +2,13 @@
 import '../../styles/global.css';
 import ComparisonLayout from '../../components/ComparisonLayout.astro';
 import { getClimateByDestinationId, loadClimateData } from '../../lib/climate';
+import { getCultureByDestinationId, loadCultureData } from '../../lib/culture';
 import { loadPopulationData } from '../../lib/population';
 
 export function getStaticPaths() {
 	const population = loadPopulationData();
 	const climateData = loadClimateData();
+	const cultureData = loadCultureData();
 	return population.destinations.map((destination) => ({
 		params: { id: destination.id },
 		props: {
@@ -14,11 +16,12 @@ export function getStaticPaths() {
 			destinations: population.destinations,
 			references: population.references,
 			climate: getClimateByDestinationId(climateData, destination.id),
+			culture: getCultureByDestinationId(cultureData, destination.id),
 		},
 	}));
 }
 
-const { destination, destinations, references, climate } = Astro.props;
+const { destination, destinations, references, climate, culture } = Astro.props;
 ---
 
-<ComparisonLayout {destination} {destinations} {references} {climate} />
+<ComparisonLayout {destination} {destinations} {references} {climate} {culture} />

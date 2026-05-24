@@ -56,6 +56,8 @@ El widget MUST organizar la información en este orden:
 1. **Capa país** — población del **país destino** frente a **Perú** (país).
 2. **Capa ciudad** — población de la **ciudad destino** frente a la **provincia de Lima**; los **distritos** de Lima MUST mostrarse en la misma capa ciudad de forma compacta (lista o filas densas), sin duplicar el encabezado de país.
 
+La ficha de destino en `/destino/<id>/` MAY componer otras capabilities (p. ej. `destination-climate`, `destination-culture`) en la misma página sin que formen parte del alcance de población.
+
 #### Scenario: Lectura de escala humana
 
 - **WHEN** el usuario visualiza la comparación de un destino de prueba
@@ -92,7 +94,7 @@ Cuando se muestra cualquier comparación con un referente peruano, la UI MUST in
 
 ### Requirement: Sin funcionalidades de otras fases
 
-El alcance de la capability `population-comparison` MUST limitarse a datos, lógica y presentación de **población**. La ficha de destino en `/destino/<id>/` MAY componer otras capabilities (p. ej. `destination-climate`) en la misma página sin que formen parte del alcance de población.
+El alcance de la capability `population-comparison` MUST limitarse a datos, lógica y presentación de **población**. La ficha de destino en `/destino/<id>/` MAY componer otras capabilities (p. ej. `destination-climate`, `destination-culture`) en la misma página sin que formen parte del alcance de población.
 
 #### Scenario: Módulo de población acotado
 
@@ -103,3 +105,8 @@ El alcance de la capability `population-comparison` MUST limitarse a datos, lóg
 
 - **WHEN** el usuario visita `/destino/madrid/` tras la entrega de clima
 - **THEN** puede ver población y clima en la misma ficha, cada uno como sección distinta
+
+#### Scenario: Página compuesta con cultura en Fase 4+
+
+- **WHEN** el usuario visita `/destino/madrid/` tras la entrega de cultura
+- **THEN** puede ver población, clima y cultura en la misma ficha, cada uno como sección distinta

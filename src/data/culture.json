@@ -1,0 +1,79 @@
+{
+	"destinations": [
+		{
+			"destinationId": "madrid",
+			"summary": "Madrid combina formalidad cordial con un ritmo social nocturno. Para un viajero desde Perú, conviene adaptarse a horarios de comida más tardíos y a un trato directo pero educado en el trato cotidiano.",
+			"tips": [
+				{
+					"title": "Saludos y cercanía",
+					"body": "Es habitual el beso en ambas mejillas entre conocidos; en contextos formales, apretón de manos. Usa «usted» hasta que te inviten al tú."
+				},
+				{
+					"title": "Horarios de comida",
+					"body": "El almuerzo suele ser entre 14:00 y 16:00; la cena, a partir de 21:00. Reserva con antelación los fines de semana."
+				},
+				{
+					"title": "Sobremesa y ritmo",
+					"body": "La sobremesa es parte de la experiencia social; no se interpreta como retraso si la mesa permanece un rato tras terminar."
+				},
+				{
+					"title": "Transporte y barrios",
+					"body": "Metro y autobús cubren bien el centro; camina los barrios de día y presta atención a pertenencias en zonas muy concurridas."
+				}
+			],
+			"source": "Ministerio de Turismo de España (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.spain.info/"
+		},
+		{
+			"destinationId": "cdmx",
+			"summary": "La Ciudad de México es diversa y hospitalaria, con gran peso de la cortesía en el trato. La altitud puede afectar los primeros días; hidrátate y planifica actividades intensas con calma.",
+			"tips": [
+				{
+					"title": "Cortesía en el trato",
+					"body": "Saludar al entrar a comercios («buenos días/tardes») es muy valorado. Un tono amable abre conversaciones."
+				},
+				{
+					"title": "Propina y consumo",
+					"body": "En restaurantes suele dejarse 10–15 % si no está incluido el servicio; verifica el ticket antes de pagar."
+				},
+				{
+					"title": "Altitud y ritmo",
+					"body": "A unos 2 240 m, toma agua con frecuencia los primeros días y evita exceso de alcohol hasta aclimatarte."
+				},
+				{
+					"title": "Movilidad",
+					"body": "Combina metro, aplicaciones de movilidad y caminatas cortas; evita horas pico si puedes y usa taxis oficiales de noche."
+				}
+			],
+			"source": "SECTUR México (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.gob.mx/sectur"
+		},
+		{
+			"destinationId": "buenos-aires",
+			"summary": "Buenos Aires tiene un estilo relajado y conversador, con fuerte identidad porteña. El voseo es habitual; no es falta de respeto, sino registro local informal.",
+			"tips": [
+				{
+					"title": "Voseo y trato",
+					"body": "Escucharás «vos» en lugar de «tú» en muchos contextos informales; responder con amabilidad basta para integrarte."
+				},
+				{
+					"title": "Mate y reuniones",
+					"body": "Si te ofrecen mate, es gesto de confianza; no es obligatorio aceptar, pero agradece. Evita mover la bombilla si te lo comparten."
+				},
+				{
+					"title": "Cena tardía",
+					"body": "Reservar a partir de 21:00 es normal; muchos bares y milongas cobran fuerza después de las 22:00."
+				},
+				{
+					"title": "Seguridad práctica",
+					"body": "Usa poco efectivo visible, prefiere apps de pago en taxis y mantén documentos en hotel; consulta zonas con locales."
+				}
+			],
+			"source": "Argentina.travel (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.argentina.travel/"
+		}
+	]
+}

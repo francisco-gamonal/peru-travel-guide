@@ -74,12 +74,3 @@ El bloque climático MUST mostrarse en la misma ruta `/destino/<id>/` que la com
 
 - **WHEN** el usuario abre `/destino/madrid/`
 - **THEN** ve la comparación poblacional y, a continuación, clima y mejores épocas
-
-### Requirement: Sin cultura en esta entrega
-
-El alcance de `destination-climate` MUST NOT incluir bloques de cultura, costumbres detalladas ni calendario de eventos locales (Fase 4).
-
-#### Scenario: Sin sección de cultura
-
-- **WHEN** el usuario usa la ficha de destino tras esta entrega
-- **THEN** no se presenta una sección de cultura como si estuviera implementada

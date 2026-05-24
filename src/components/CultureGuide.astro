@@ -1,0 +1,73 @@
+---
+import { buildCultureWidgetView } from '../lib/culture';
+import type { CultureDestination } from '../types/culture';
+
+interface Props {
+	culture: CultureDestination | null;
+	cityName: string;
+}
+
+const { culture, cityName } = Astro.props;
+const view = culture ? buildCultureWidgetView(culture) : null;
+---
+
+<section class="flex flex-col gap-4" aria-labelledby="culture-heading">
+	{
+		view ? (
+			<article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+				<header class="border-b border-slate-100 pb-4">
+					<h2 id="culture-heading" class="text-xl font-semibold text-slate-900">
+						Cultura y consejos prácticos
+					</h2>
+					<p class="mt-2 text-slate-700">{view.summary}</p>
+					<p class="mt-1 text-sm text-slate-500">
+						Orientación general para visitar {cityName}; respeta las normas locales y contrasta con
+						fuentes oficiales si viajas por trabajo o trámites.
+					</p>
+				</header>
+
+				<div class="mt-4">
+					<h3 class="text-sm font-semibold uppercase tracking-wide text-slate-600">
+						Consejos prácticos
+					</h3>
+					<ul class="mt-3 flex flex-col gap-3" role="list">
+						{view.tips.map((tip) => (
+							<li class="border-t border-slate-100 pt-3 text-sm first:border-t-0 first:pt-0">
+								<p class="font-medium text-slate-900">{tip.title}</p>
+								<p class="mt-0.5 text-slate-700">{tip.body}</p>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				<footer class="mt-5 border-t border-slate-100 pt-4">
+					<p class="text-xs font-medium text-slate-600">Fuente cultural</p>
+					<p class="mt-1 text-xs text-slate-500">
+						{view.sourceFooter.sourceUrl ? (
+							<a
+								href={view.sourceFooter.sourceUrl}
+								class="text-sky-700 underline hover:text-sky-900"
+								rel="noopener noreferrer"
+							>
+								{view.sourceFooter.source}
+							</a>
+						) : (
+							<span>{view.sourceFooter.source}</span>
+						)}
+						<span> · {view.sourceFooter.year}</span>
+					</p>
+				</footer>
+			</article>
+		) : (
+			<article class="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5">
+				<h2 id="culture-heading" class="text-xl font-semibold text-slate-900">
+					Cultura y consejos prácticos
+				</h2>
+				<p class="mt-2 text-slate-600">
+					Aún no tenemos orientación cultural curada para {cityName}. Vuelve pronto o elige otro
+					destino.
+				</p>
+			</article>
+		)
+	}
+</section>

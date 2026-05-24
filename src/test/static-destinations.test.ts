@@ -20,8 +20,12 @@ describe('páginas estáticas de destinos (post-build)', () => {
 		expect(html).toContain('Madrid');
 		expect(html).toContain('Clima y mejores épocas');
 		expect(html).toContain('continental mediterráneo');
+		expect(html).toContain('Cultura y consejos prácticos');
+		expect(html).toContain('sobremesa');
+		expect(html).toMatch(/cultura/i);
 		expect(html).toContain('Por país');
 		expect(html).toContain('Por ciudad');
+		expect(html).not.toContain('Próximamente: cultura');
 	});
 
 	it('Ciudad de México en /destino/cdmx/ (regresión static output)', () => {
@@ -31,10 +35,13 @@ describe('páginas estáticas de destinos (post-build)', () => {
 		expect(html).not.toMatch(/<h2[^>]*>\s*Madrid, España\s*</);
 		expect(html).toContain('temporada de lluvias');
 		expect(html).not.toContain('continental mediterráneo');
+		expect(html).toContain('Propina y consumo');
+		expect(html).not.toContain('sobremesa');
 	});
 
 	it('Buenos Aires en /destino/buenos-aires/', () => {
 		const html = readDistHtml('destino/buenos-aires');
 		expect(html).toContain('Buenos Aires');
+		expect(html).toContain('voseo');
 	});
 });

@@ -50,15 +50,19 @@
 
 ---
 
-## Fase 4 — Cultura y guía personal 🔄 (siguiente)
+## Fase 4 — Cultura y guía personal ✅ Completada
 
 **Entregables:** Bloque cultural práctico para el viajero; experiencia unificada (población + clima + cultura + épocas).
 
 **Criterio de salida:** Usuario percibe la página como guía personal, no como panel de datos sueltos.
 
+**OpenSpec:** Cambio `add-destination-culture` archivado (`openspec/changes/archive/2026-05-24-add-destination-culture/`). Capability `destination-culture` en `openspec/specs/`.
+
+**Estado:** Completada (2026-05-24).
+
 ---
 
-## Fase 5 — Production
+## Fase 5 — Production 🔄 (siguiente)
 
 **Entregables:** Deploy en Vercel o Netlify; dominio (opcional); comprobación básica de rendimiento.
 
