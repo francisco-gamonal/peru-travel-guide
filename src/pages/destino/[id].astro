@@ -1,0 +1,21 @@
+---
+import '../../styles/global.css';
+import ComparisonLayout from '../../components/ComparisonLayout.astro';
+import { loadPopulationData } from '../../lib/population';
+
+export function getStaticPaths() {
+	const data = loadPopulationData();
+	return data.destinations.map((destination) => ({
+		params: { id: destination.id },
+		props: {
+			destination,
+			destinations: data.destinations,
+			references: data.references,
+		},
+	}));
+}
+
+const { destination, destinations, references } = Astro.props;
+---
+
+<ComparisonLayout {destination} {destinations} {references} />

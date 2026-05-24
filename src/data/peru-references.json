@@ -1,0 +1,49 @@
+{
+	"references": [
+		{
+			"id": "peru",
+			"name": "Perú",
+			"kind": "country",
+			"population": 34352719,
+			"source": "INEI",
+			"year": 2024,
+			"sourceUrl": "https://www.inei.gob.pe/estadisticas/indice-tematico/poblacion-y-vivienda/"
+		},
+		{
+			"id": "lima-province",
+			"name": "Provincia de Lima",
+			"kind": "province",
+			"population": 10302674,
+			"source": "INEI",
+			"year": 2022,
+			"sourceUrl": "https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1853/"
+		},
+		{
+			"id": "lima-district-miraflores",
+			"name": "Miraflores (Lima)",
+			"kind": "district",
+			"population": 109303,
+			"source": "INEI",
+			"year": 2022,
+			"sourceUrl": "https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1853/"
+		},
+		{
+			"id": "lima-district-san-isidro",
+			"name": "San Isidro (Lima)",
+			"kind": "district",
+			"population": 98935,
+			"source": "INEI",
+			"year": 2022,
+			"sourceUrl": "https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1853/"
+		},
+		{
+			"id": "lima-district-cercado",
+			"name": "Cercado de Lima",
+			"kind": "district",
+			"population": 1050749,
+			"source": "INEI",
+			"year": 2022,
+			"sourceUrl": "https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1853/"
+		}
+	]
+}

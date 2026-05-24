@@ -1,0 +1,61 @@
+---
+import type { Destination } from '../types/population';
+
+interface Props {
+	destinations: Destination[];
+	currentId: string;
+}
+
+const { destinations, currentId } = Astro.props;
+---
+
+<form class="flex flex-col gap-2 sm:flex-row sm:items-end" id="destination-form">
+	<label for="destination" class="text-sm font-medium text-slate-700">
+		Elige un destino
+	</label>
+	<div class="flex flex-1 flex-col gap-2 sm:flex-row sm:items-center">
+		<select
+			id="destination"
+			name="destination"
+			class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 sm:max-w-xs"
+		>
+			{
+				destinations.map((destination) => (
+					<option value={destination.id} selected={destination.id === currentId}>
+						{destination.cityName}, {destination.countryName}
+					</option>
+				))
+			}
+		</select>
+		<button
+			type="submit"
+			class="rounded-lg bg-sky-700 px-4 py-2 text-sm font-medium text-white hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-300"
+		>
+			Comparar
+		</button>
+	</div>
+</form>
+
+<script>
+	function navigateToDestination(id: string) {
+		if (id) {
+			window.location.assign(`/destino/${id}/`);
+		}
+	}
+
+	const form = document.getElementById('destination-form');
+	const select = document.getElementById('destination');
+
+	form?.addEventListener('submit', (event) => {
+		event.preventDefault();
+		if (select instanceof HTMLSelectElement) {
+			navigateToDestination(select.value);
+		}
+	});
+
+	select?.addEventListener('change', () => {
+		if (select instanceof HTMLSelectElement) {
+			navigateToDestination(select.value);
+		}
+	});
+</script>

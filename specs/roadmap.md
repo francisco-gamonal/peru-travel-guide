@@ -24,17 +24,19 @@
 
 ---
 
-## Fase 2 — Comparación poblacional (MVP) 🔄 (siguiente)
+## Fase 2 — Comparación poblacional (MVP) 🔄 (en curso)
 
 **Entregables:** Flujo: usuario indica ciudad/país destino → comparación con Perú, Lima y distritos relevantes; visualización clara de habitantes.
 
 **Criterio de salida:** Al menos un destino internacional de prueba con datos de población mostrados y contrastados con el referente peruano.
 
-**OpenSpec:** Cambio dedicado (p. ej. `add-population-comparison`).
+**OpenSpec:** Cambio `add-population-comparison` (apply en curso).
+
+**Estado:** Implementación MVP en progreso (2026-05-24).
 
 ---
 
-## Fase 3 — Clima y mejores épocas
+## Fase 3 — Clima y mejores épocas 🔄 (siguiente)
 
 **Entregables:** Ficha de destino con resumen climático y ventanas recomendadas para viajar.
 

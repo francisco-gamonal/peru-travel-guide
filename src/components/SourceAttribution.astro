@@ -1,0 +1,21 @@
+---
+interface Props {
+	source: string;
+	year: number;
+	sourceUrl?: string;
+}
+
+const { source, year, sourceUrl } = Astro.props;
+---
+
+<p class="text-xs text-slate-500">
+	Fuente:
+	{sourceUrl ? (
+		<a href={sourceUrl} class="text-sky-700 underline hover:text-sky-900" rel="noopener noreferrer">
+			{source}
+		</a>
+	) : (
+		<span>{source}</span>
+	)}
+	· Año: {year}
+</p>

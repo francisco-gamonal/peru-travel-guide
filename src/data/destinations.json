@@ -1,0 +1,40 @@
+{
+	"destinations": [
+		{
+			"id": "madrid",
+			"cityName": "Madrid",
+			"countryName": "España",
+			"cityPopulation": 3401900,
+			"countryPopulation": 49315955,
+			"citySource": "INE España (municipio)",
+			"countrySource": "INE España",
+			"year": 2024,
+			"citySourceUrl": "https://www.ine.es/",
+			"countrySourceUrl": "https://www.ine.es/"
+		},
+		{
+			"id": "cdmx",
+			"cityName": "Ciudad de México",
+			"countryName": "México",
+			"cityPopulation": 9209944,
+			"countryPopulation": 130575786,
+			"citySource": "INEGI (alcaldía CDMX)",
+			"countrySource": "INEGI",
+			"year": 2023,
+			"citySourceUrl": "https://www.inegi.org.mx/",
+			"countrySourceUrl": "https://www.inegi.org.mx/"
+		},
+		{
+			"id": "buenos-aires",
+			"cityName": "Buenos Aires",
+			"countryName": "Argentina",
+			"cityPopulation": 3123640,
+			"countryPopulation": 45851378,
+			"citySource": "INDEC (CABA)",
+			"countrySource": "INDEC",
+			"year": 2023,
+			"citySourceUrl": "https://www.indec.gob.ar/",
+			"countrySourceUrl": "https://www.indec.gob.ar/"
+		}
+	]
+}
