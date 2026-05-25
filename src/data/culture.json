@@ -99,6 +99,81 @@
 			"source": "VisitBritain (referencia agregada)",
 			"year": 2024,
 			"sourceUrl": "https://www.visitbritain.com/"
+		},
+		{
+			"destinationId": "paris",
+			"summary": "París valora la cortesía en el trato comercial y un registro formal inicial. Para un viajero desde Perú, conviene acostumbrarse al «bonjour» al entrar en tiendas, a las propinas incluidas en el servicio y a reservar restaurantes con antelación.",
+			"tips": [
+				{
+					"title": "Saludo al entrar",
+					"body": "Di «bonjour» al entrar en comercios y panaderías; omitirlo puede percibirse como descortés."
+				},
+				{
+					"title": "Servicio en restaurantes",
+					"body": "El service est incluido en la cuenta; una propina extra es opcional por buen servicio, no obligatoria."
+				},
+				{
+					"title": "Metro y transporte",
+					"body": "Usa Navigo Easy o billetes; evita bloquear las puertas del metro y mantén la voz baja."
+				},
+				{
+					"title": "Horarios de comida",
+					"body": "El almuerzo suele ser 12:00–14:00 y la cena a partir de 19:30; reserva los fines de semana."
+				}
+			],
+			"source": "Atout France (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.france.fr/"
+		},
+		{
+			"destinationId": "tokyo",
+			"summary": "Tokio combina cortesía extrema con reglas tácitas de convivencia en espacios públicos. Para un viajero desde Perú, conviene adaptarse al silencio en transporte, a quitarse zapatos donde se indique y a llevar efectivo en barrios tradicionales.",
+			"tips": [
+				{
+					"title": "Silencio en el tren",
+					"body": "Evita llamadas y conversaciones fuertes en JR y metro; el móvil en silencioso es la norma."
+				},
+				{
+					"title": "Zapatos y tatami",
+					"body": "Quítate los zapatos al entrar en ryokan, algunos restaurantes y vestuarios; usa calcetines limpios."
+				},
+				{
+					"title": "Propina y pagos",
+					"body": "No se deja propina; puede interpretarse como ofensa. Lleva yen en efectivo para locales pequeños."
+				},
+				{
+					"title": "Basura y reciclaje",
+					"body": "Hay pocos papeleros en la calle; lleva una bolsa pequeña hasta encontrar contenedor en estación o konbini."
+				}
+			],
+			"source": "Japan National Tourism Organization (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.japan.travel/"
+		},
+		{
+			"destinationId": "new-york",
+			"summary": "Nueva York es directa y rápida en el trato cotidiano, con fuerte cultura de propina y ritmo acelerado. Para un viajero desde Perú, conviene caminar por la derecha en aceras, tipificar bien en restaurantes y usar el grid de Manhattan para orientarse.",
+			"tips": [
+				{
+					"title": "Propina en servicios",
+					"body": "En restaurantes suele ser 18–22 %; en taxis y delivery también se espera propina generosa."
+				},
+				{
+					"title": "Aceras y escaleras",
+					"body": "Camina por la derecha; no te detengas en medio de la acera para mirar el mapa."
+				},
+				{
+					"title": "Grid de Manhattan",
+					"body": "Las avenidas van norte-sur y las calles este-oeste; los números de calle crecen hacia el norte."
+				},
+				{
+					"title": "Metro y OMNY",
+					"body": "Puedes pagar con contactless (OMNY); evita bloquear las puertas y deja salir antes de entrar."
+				}
+			],
+			"source": "NYC Tourism (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.nycgo.com/"
 		}
 	]
 }

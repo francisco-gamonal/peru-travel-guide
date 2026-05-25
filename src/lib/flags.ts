@@ -1,12 +1,15 @@
 import arFlag from '../assets/flags/ar.svg?url';
 import esFlag from '../assets/flags/es.svg?url';
+import frFlag from '../assets/flags/fr.svg?url';
 import gbFlag from '../assets/flags/gb.svg?url';
+import jpFlag from '../assets/flags/jp.svg?url';
 import mxFlag from '../assets/flags/mx.svg?url';
 import peFlag from '../assets/flags/pe.svg?url';
+import usFlag from '../assets/flags/us.svg?url';
 
 export const PERU_COUNTRY_CODE = 'PE';
 
-export const SUPPORTED_COUNTRY_CODES = ['PE', 'ES', 'MX', 'AR', 'GB'] as const;
+export const SUPPORTED_COUNTRY_CODES = ['PE', 'ES', 'MX', 'AR', 'GB', 'FR', 'JP', 'US'] as const;
 
 export type CountryCode = (typeof SUPPORTED_COUNTRY_CODES)[number];
 
@@ -18,6 +21,9 @@ const FLAG_URLS: Record<CountryCode, string> = {
 	MX: mxFlag,
 	AR: arFlag,
 	GB: gbFlag,
+	FR: frFlag,
+	JP: jpFlag,
+	US: usFlag,
 };
 
 const FLAG_DIMENSIONS: Record<FlagSize, { width: number; height: number }> = {

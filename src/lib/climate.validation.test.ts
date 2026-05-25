@@ -152,3 +152,26 @@ describe('destino london (add-destination-england)', () => {
 		expect(london?.source).toBeTruthy();
 	});
 });
+
+describe('destinos París, Tokio y Nueva York (add-curated-destinations-paris-tokyo-nyc)', () => {
+	// @spec DC-11
+	it('loadClimateData incluye paris, tokyo y new-york con resumen y ventanas', async () => {
+		vi.resetModules();
+		vi.doUnmock('../data/climate.json');
+		const { loadClimateData, getClimateByDestinationId } = await import('./climate');
+		const data = loadClimateData();
+		for (const id of ['paris', 'tokyo', 'new-york'] as const) {
+			const climate = getClimateByDestinationId(data, id);
+			expect(climate).toBeDefined();
+			expect(climate?.summary.length).toBeGreaterThan(0);
+			expect(climate?.seasons.length).toBeGreaterThanOrEqual(1);
+			expect(climate?.bestTimeToVisit.length).toBeGreaterThanOrEqual(1);
+		}
+		const paris = getClimateByDestinationId(data, 'paris');
+		expect(paris?.summary).toMatch(/oceánico/i);
+		const tokyo = getClimateByDestinationId(data, 'tokyo');
+		expect(tokyo?.summary).toMatch(/subtropical/i);
+		const nyc = getClimateByDestinationId(data, 'new-york');
+		expect(nyc?.summary).toMatch(/continental húmedo/i);
+	});
+});

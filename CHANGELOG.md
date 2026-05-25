@@ -185,6 +185,18 @@
 
 ---
 
+## 2026-05-24 — add-curated-destinations-paris-tokyo-nyc
+
+- Añadir destinos curados con `id` **`paris`**, **`tokyo`**, **`new-york`** en `src/data/destinations.json` (población ciudad/país, `countryCode` **`FR`**, **`JP`**, **`US`**, fuentes y año).
+- Añadir bloques de clima y cultura en `src/data/climate.json` y `src/data/culture.json` para cada `destinationId`.
+- Generar rutas estáticas `/destino/paris/`, `/destino/tokyo/`, `/destino/new-york/` vía `getStaticPaths` existente.
+- Añadir SVG de banderas `fr.svg`, `jp.svg`, `us.svg` en `src/assets/flags/` e integrarlas en selector y ficha.
+- Actualizar selector, tests unitarios, estáticos post-build y E2E con Scenario IDs nuevos.
+- Delta **`project-constitution`**: **PCO-17** — Fase 10 completada al archivar.
+- `breaking: false` en `.openspec.yaml`.
+
+---
+
 ## 2026-05-23 — scaffold-astro-project
 
 - Inicializar proyecto **Astro 6** en la raíz del repositorio (conviviendo con `specs/` y `openspec/`).

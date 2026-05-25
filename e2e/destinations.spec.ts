@@ -6,6 +6,9 @@ const destinations = [
 	{ id: 'cdmx', city: 'Ciudad de México' },
 	{ id: 'buenos-aires', city: 'Buenos Aires' },
 	{ id: 'london', city: 'Londres' },
+	{ id: 'paris', city: 'París' },
+	{ id: 'tokyo', city: 'Tokio' },
+	{ id: 'new-york', city: 'Nueva York' },
 ] as const;
 
 /** Ruta relativa al baseURL (respeta ASTRO_BASE, p. ej. /peru-travel-guide/). */
@@ -34,6 +37,29 @@ test('destino london muestra comparación poblacional de Londres y Reino Unido',
 	await expect(page.getByText('Por ciudad')).toBeVisible();
 	await expect(comparisonHeading(page)).toContainText('Londres');
 	await expect(page.locator('body')).toContainText('Reino Unido');
+});
+
+// @spec PC-18
+test('destino paris muestra comparación poblacional de París y Francia', async ({ page }) => {
+	await page.goto(appPath('/destino/paris/'));
+	await expect(comparisonHeading(page)).toContainText('París');
+	await expect(page.locator('body')).toContainText('Francia');
+});
+
+// @spec PC-19
+test('destino tokyo muestra comparación poblacional de Tokio y Japón', async ({ page }) => {
+	await page.goto(appPath('/destino/tokyo/'));
+	await expect(comparisonHeading(page)).toContainText('Tokio');
+	await expect(page.locator('body')).toContainText('Japón');
+});
+
+// @spec PC-20
+test('destino new-york muestra comparación poblacional de Nueva York y Estados Unidos', async ({
+	page,
+}) => {
+	await page.goto(appPath('/destino/new-york/'));
+	await expect(comparisonHeading(page)).toContainText('Nueva York');
+	await expect(page.locator('body')).toContainText('Estados Unidos');
 });
 
 for (const { id, city } of destinations) {
@@ -69,6 +95,27 @@ test('destino london muestra clima oceánico y mejores épocas', async ({ page }
 	const climateSection = page.locator('section[aria-labelledby="climate-heading"]');
 	await expect(climateSection).toContainText(/clima oceánico/i);
 	await expect(climateSection).not.toContainText(/continental mediterráneo/i);
+});
+
+// @spec DC-12
+test('destino paris muestra clima oceánico templado y mejores épocas', async ({ page }) => {
+	await page.goto(appPath('/destino/paris/'));
+	const climateSection = page.locator('section[aria-labelledby="climate-heading"]');
+	await expect(climateSection).toContainText(/clima oceánico/i);
+});
+
+// @spec DC-13
+test('destino tokyo muestra clima subtropical húmedo y mejores épocas', async ({ page }) => {
+	await page.goto(appPath('/destino/tokyo/'));
+	const climateSection = page.locator('section[aria-labelledby="climate-heading"]');
+	await expect(climateSection).toContainText(/subtropical/i);
+});
+
+// @spec DC-14
+test('destino new-york muestra clima continental húmedo y mejores épocas', async ({ page }) => {
+	await page.goto(appPath('/destino/new-york/'));
+	const climateSection = page.locator('section[aria-labelledby="climate-heading"]');
+	await expect(climateSection).toContainText(/continental húmedo/i);
 });
 
 for (const { id, snippet } of [
@@ -116,6 +163,21 @@ test('selector muestra banderas y actualiza cabecera al cambiar destino', async 
 	await expect(page.getByRole('heading', { level: 1 })).toContainText('Londres');
 });
 
+// @spec DV-11
+test('selector muestra banderas de siete destinos y actualiza cabecera París → Tokio', async ({
+	page,
+}) => {
+	await page.goto(appPath('/destino/paris/'));
+	await expect(
+		page.locator('header').getByRole('img', { name: 'Bandera de Francia' }),
+	).toBeVisible();
+	await selectDestination(page, /Tokio, Japón/);
+	await expect(page).toHaveURL(/\/destino\/tokyo\//);
+	await expect(
+		page.locator('header').getByRole('img', { name: 'Bandera de Japón' }),
+	).toBeVisible();
+});
+
 test('selector actualiza el bloque climático al cambiar destino', async ({ page }) => {
 	await page.goto(appPath('/destino/madrid/'));
 	const climateSection = page.locator('section[aria-labelledby="climate-heading"]');
@@ -134,6 +196,27 @@ test('destino london muestra cultura y consejos prácticos', async ({ page }) =>
 	const cultureSection = page.locator('section[aria-labelledby="culture-heading"]');
 	await expect(cultureSection).toContainText(/Oyster/i);
 	await expect(cultureSection).not.toContainText(/Próximamente: cultura/i);
+});
+
+// @spec CU-11
+test('destino paris muestra cultura y consejos prácticos', async ({ page }) => {
+	await page.goto(appPath('/destino/paris/'));
+	const cultureSection = page.locator('section[aria-labelledby="culture-heading"]');
+	await expect(cultureSection).toContainText(/bonjour/i);
+});
+
+// @spec CU-12
+test('destino tokyo muestra cultura y consejos prácticos', async ({ page }) => {
+	await page.goto(appPath('/destino/tokyo/'));
+	const cultureSection = page.locator('section[aria-labelledby="culture-heading"]');
+	await expect(cultureSection).toContainText(/silencio/i);
+});
+
+// @spec CU-13
+test('destino new-york muestra cultura y consejos prácticos', async ({ page }) => {
+	await page.goto(appPath('/destino/new-york/'));
+	const cultureSection = page.locator('section[aria-labelledby="culture-heading"]');
+	await expect(cultureSection).toContainText(/propina/i);
 });
 
 for (const { id, snippet } of [

@@ -154,15 +154,15 @@
 
 ---
 
-## Fase 10 — Destinos curados París, Tokio, Nueva York ⬜ Pendiente
+## Fase 10 — Destinos curados París, Tokio, Nueva York ✅ Completada
 
-**Entregables:** Tres destinos curados (`paris`, `tokyo`, `new-york`) con población, clima, cultura y épocas; banderas `FR`, `JP`, `US`; rutas `/destino/paris/`, `/destino/tokyo/`, `/destino/new-york/`; selector actualizado.
+**Entregables:** Destinos `paris`, `tokyo`, `new-york` con población, clima, cultura y épocas; banderas `FR`, `JP`, `US`; rutas `/destino/paris/`, `/destino/tokyo/`, `/destino/new-york/`; selector con siete destinos; trazabilidad PC-17–PC-20, DC-11–DC-14, CU-10–CU-13, DV-09–DV-11.
 
-**Criterio de salida:** `pnpm test:verify` en verde; job `lighthouse` sin regresión; cambio `add-curated-destinations-paris-tokyo-nyc` archivado con Scenario IDs y trazabilidad.
+**Criterio de salida:** `pnpm test:verify` en verde; cambio `add-curated-destinations-paris-tokyo-nyc` archivado con Scenario IDs y trazabilidad.
 
-**OpenSpec:** Cambio propuesto `add-curated-destinations-paris-tokyo-nyc`. Reutiliza patrón Fase 7 + banderas Fase 8.
+**OpenSpec:** Cambio `add-curated-destinations-paris-tokyo-nyc` archivado (`openspec/changes/archive/2026-05-24-add-curated-destinations-paris-tokyo-nyc/`). Capabilities `population-comparison` (`1.2.0`), `destination-climate` (`1.2.0`), `destination-culture` (`1.2.0`), `destination-visuals` (`1.1.0`), `project-constitution` (`1.8.0`, PCO-17).
 
-**Estado:** Pendiente.
+**Estado:** Completada (2026-05-24).
 
 ---
 

@@ -38,4 +38,13 @@ describe('flags (destination-visuals)', () => {
 		expect(isValidCountryCode('es')).toBe(false);
 		expect(isValidCountryCode('ESP')).toBe(false);
 	});
+
+	// @spec DV-09
+	it('mapea countryCode FR, JP y US a assets de bandera', () => {
+		for (const code of ['FR', 'JP', 'US'] as const) {
+			const src = getFlagAsset(code);
+			expect(src.length).toBeGreaterThan(0);
+			expect(src).toMatch(/\.svg$|data:image\/svg\+xml/);
+		}
+	});
 });

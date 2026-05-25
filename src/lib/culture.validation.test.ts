@@ -96,3 +96,20 @@ describe('destino london (add-destination-england)', () => {
 		expect(london?.tips.every((t) => t.title && t.body)).toBe(true);
 	});
 });
+
+describe('destinos París, Tokio y Nueva York (add-curated-destinations-paris-tokyo-nyc)', () => {
+	// @spec CU-10
+	it('loadCultureData incluye paris, tokyo y new-york con al menos tres consejos', async () => {
+		vi.resetModules();
+		vi.doUnmock('../data/culture.json');
+		const { loadCultureData, getCultureByDestinationId } = await import('./culture');
+		const data = loadCultureData();
+		for (const id of ['paris', 'tokyo', 'new-york'] as const) {
+			const culture = getCultureByDestinationId(data, id);
+			expect(culture).toBeDefined();
+			expect(culture?.summary.length).toBeGreaterThan(0);
+			expect(culture?.tips.length).toBeGreaterThanOrEqual(3);
+			expect(culture?.tips.every((t) => t.title && t.body)).toBe(true);
+		}
+	});
+});

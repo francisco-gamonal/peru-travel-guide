@@ -8,12 +8,15 @@ import {
 describe('loadCultureData', () => {
 	it('carga cultura para los destinos curados', () => {
 		const data = loadCultureData();
-		expect(data.destinations).toHaveLength(4);
+		expect(data.destinations).toHaveLength(7);
 		expect(data.destinations.map((d) => d.destinationId)).toEqual([
 			'madrid',
 			'cdmx',
 			'buenos-aires',
 			'london',
+			'paris',
+			'tokyo',
+			'new-york',
 		]);
 	});
 

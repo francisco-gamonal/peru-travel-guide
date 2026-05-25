@@ -9,12 +9,15 @@ import {
 describe('loadClimateData', () => {
 	it('carga clima para los destinos curados', () => {
 		const data = loadClimateData();
-		expect(data.destinations).toHaveLength(4);
+		expect(data.destinations).toHaveLength(7);
 		expect(data.destinations.map((d) => d.destinationId)).toEqual([
 			'madrid',
 			'cdmx',
 			'buenos-aires',
 			'london',
+			'paris',
+			'tokyo',
+			'new-york',
 		]);
 	});
 

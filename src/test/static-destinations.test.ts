@@ -62,6 +62,18 @@ describe('páginas estáticas de destinos (post-build)', () => {
 		expect(html).toContain('voseo');
 	});
 
+	// @spec DV-10
+	it('París en /destino/paris/ con bandera de Francia', () => {
+		const html = readDistHtml('destino/paris');
+		expect(html).toContain('París');
+		expect(html).toContain('Francia');
+		expect(html).toContain('clima oceánico');
+		expect(html).toContain('bonjour');
+		expect(html).toContain('Bandera de Francia');
+		expect(html).toMatch(/width="32"/);
+		expect(html).toMatch(/height="24"/);
+	});
+
 	// @spec PC-15
 	it('Londres en /destino/london/', () => {
 		const html = readDistHtml('destino/london');

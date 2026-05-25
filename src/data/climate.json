@@ -167,6 +167,141 @@
 			"source": "Met Office UK (referencia agregada)",
 			"year": 2024,
 			"sourceUrl": "https://www.metoffice.gov.uk/"
+		},
+		{
+			"destinationId": "paris",
+			"summary": "París tiene un clima oceánico templado: inviernos frescos con lluvia frecuente, veranos cálidos pero rara vez extremos. La humedad y el viento pueden hacer sentir más el frío en invierno.",
+			"seasons": [
+				{
+					"name": "Invierno (dic–feb)",
+					"tempRangeC": "3–8 °C",
+					"rainfall": "Frecuente",
+					"description": "Días fríos y grises; museos, cafés y metro con abrigo e impermeable."
+				},
+				{
+					"name": "Primavera (mar–may)",
+					"tempRangeC": "8–18 °C",
+					"rainfall": "Moderada",
+					"description": "Parques en flor y más luz; capas ligeras por cambios de temperatura."
+				},
+				{
+					"name": "Verano (jun–ago)",
+					"tempRangeC": "15–26 °C",
+					"rainfall": "Variable",
+					"description": "Veranos templados; picos ocasionales de calor. Buena época para caminar con paraguas ligero."
+				},
+				{
+					"name": "Otoño (sep–nov)",
+					"tempRangeC": "9–17 °C",
+					"rainfall": "Moderada",
+					"description": "Otoño suave antes del invierno; menos multitudes que en verano escolar."
+				}
+			],
+			"bestTimeToVisit": [
+				{
+					"label": "Abril a junio y septiembre",
+					"months": ["Abr", "May", "Jun", "Sep"],
+					"reason": "Temperaturas agradables para pasear y menos extremos que el invierno húmedo."
+				},
+				{
+					"label": "Invierno con plan indoor",
+					"months": ["Dic", "Ene", "Feb"],
+					"reason": "Menos turismo en algunas atracciones; prioriza ropa impermeable."
+				}
+			],
+			"source": "Météo-France (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://meteofrance.com/"
+		},
+		{
+			"destinationId": "tokyo",
+			"summary": "Tokio tiene clima subtropical húmedo: veranos calurosos y húmedos con temporada de lluvias (tsuyu), inviernos secos y relativamente suaves. Los tifones pueden afectar finales de verano y otoño.",
+			"seasons": [
+				{
+					"name": "Invierno (dic–feb)",
+					"tempRangeC": "4–12 °C",
+					"rainfall": "Seco",
+					"description": "Días soleados y secos; noches frescas. Ideal para templos y museos con capas."
+				},
+				{
+					"name": "Primavera (mar–may)",
+					"tempRangeC": "10–22 °C",
+					"rainfall": "Moderada",
+					"description": "Temporada de sakura; reserva alojamiento con antelación en marzo-abril."
+				},
+				{
+					"name": "Verano (jun–ago)",
+					"tempRangeC": "22–32 °C",
+					"rainfall": "Alta (tsuyu y calor)",
+					"description": "Calor húmedo intenso; lleva ropa ligera, sombrero y mucha hidratación."
+				},
+				{
+					"name": "Otoño (sep–nov)",
+					"tempRangeC": "14–24 °C",
+					"rainfall": "Variable (tifones)",
+					"description": "Follaje otoñal y temperaturas cómodas; vigila avisos meteorológicos."
+				}
+			],
+			"bestTimeToVisit": [
+				{
+					"label": "Marzo a mayo y octubre a noviembre",
+					"months": ["Mar", "Abr", "May", "Oct", "Nov"],
+					"reason": "Clima más templado sin el pico de calor y humedad del verano."
+				},
+				{
+					"label": "Si viajas en verano",
+					"months": ["Jul", "Ago"],
+					"reason": "Planifica actividades a la mañana; espera lluvias de tsuyu en junio-julio."
+				}
+			],
+			"source": "Japan Meteorological Agency (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.jma.go.jp/jma/indexe.html"
+		},
+		{
+			"destinationId": "new-york",
+			"summary": "Nueva York tiene clima continental húmedo: inviernos fríos con posible nieve, veranos calurosos y húmedos, y primaveras/otoños templados. El viento entre rascacielos intensifica la sensación térmica.",
+			"seasons": [
+				{
+					"name": "Invierno (dic–feb)",
+					"tempRangeC": "-2–6 °C",
+					"rainfall": "Nieve ocasional",
+					"description": "Frío seco o húmedo; abrigo grueso, gorro y guantes para caminar Manhattan."
+				},
+				{
+					"name": "Primavera (mar–may)",
+					"tempRangeC": "6–20 °C",
+					"rainfall": "Moderada",
+					"description": "Días variables; ideal para Central Park y paseos con capas."
+				},
+				{
+					"name": "Verano (jun–ago)",
+					"tempRangeC": "20–32 °C",
+					"rainfall": "Tormentas ocasionales",
+					"description": "Calor húmedo; busca sombra y aire acondicionado en interiores al mediodía."
+				},
+				{
+					"name": "Otoño (sep–nov)",
+					"tempRangeC": "8–18 °C",
+					"rainfall": "Moderada",
+					"description": "Otoño clásico en el noreste; muy popular para turismo urbano."
+				}
+			],
+			"bestTimeToVisit": [
+				{
+					"label": "Abril a junio y septiembre a octubre",
+					"months": ["Abr", "May", "Jun", "Sep", "Oct"],
+					"reason": "Temperaturas cómodas para recorrer a pie sin extremos del invierno o verano."
+				},
+				{
+					"label": "Invierno festivo",
+					"months": ["Dic"],
+					"reason": "Ambiente navideño en Rockefeller y mercados; abrígate bien."
+				}
+			],
+			"source": "National Weather Service NYC (referencia agregada)",
+			"year": 2024,
+			"sourceUrl": "https://www.weather.gov/okx/"
 		}
 	]
 }

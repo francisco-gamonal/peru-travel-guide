@@ -51,6 +51,45 @@
 			"year": 2023,
 			"citySourceUrl": "https://www.ons.gov.uk/",
 			"countrySourceUrl": "https://www.ons.gov.uk/"
+		},
+		{
+			"id": "paris",
+			"cityName": "París",
+			"countryName": "Francia",
+			"countryCode": "FR",
+			"cityPopulation": 2148000,
+			"countryPopulation": 68373000,
+			"citySource": "INSEE (commune de Paris)",
+			"countrySource": "INSEE (France)",
+			"year": 2024,
+			"citySourceUrl": "https://www.insee.fr/",
+			"countrySourceUrl": "https://www.insee.fr/"
+		},
+		{
+			"id": "tokyo",
+			"cityName": "Tokio",
+			"countryName": "Japón",
+			"countryCode": "JP",
+			"cityPopulation": 13960000,
+			"countryPopulation": 124516000,
+			"citySource": "Statistics Bureau of Japan (Tokyo Metropolis)",
+			"countrySource": "Statistics Bureau of Japan",
+			"year": 2023,
+			"citySourceUrl": "https://www.stat.go.jp/english/",
+			"countrySourceUrl": "https://www.stat.go.jp/english/"
+		},
+		{
+			"id": "new-york",
+			"cityName": "Nueva York",
+			"countryName": "Estados Unidos",
+			"countryCode": "US",
+			"cityPopulation": 8517000,
+			"countryPopulation": 334914895,
+			"citySource": "US Census Bureau (New York City)",
+			"countrySource": "US Census Bureau",
+			"year": 2023,
+			"citySourceUrl": "https://www.census.gov/",
+			"countrySourceUrl": "https://www.census.gov/"
 		}
 	]
 }

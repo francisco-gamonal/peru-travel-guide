@@ -106,3 +106,28 @@ describe('destino london (add-destination-england)', () => {
 		expect(london?.countryCode).toBe('GB');
 	});
 });
+
+describe('destinos París, Tokio y Nueva York (add-curated-destinations-paris-tokyo-nyc)', () => {
+	// @spec PC-17
+	it('loadPopulationData incluye paris, tokyo y new-york con datos válidos', async () => {
+		vi.resetModules();
+		vi.doUnmock('../data/destinations.json');
+		vi.doUnmock('../data/peru-references.json');
+		const { loadPopulationData } = await import('./population');
+		const data = loadPopulationData();
+		const expected = [
+			{ id: 'paris', city: 'París', country: 'Francia', code: 'FR' },
+			{ id: 'tokyo', city: 'Tokio', country: 'Japón', code: 'JP' },
+			{ id: 'new-york', city: 'Nueva York', country: 'Estados Unidos', code: 'US' },
+		] as const;
+		for (const { id, city, country, code } of expected) {
+			const dest = data.destinations.find((d) => d.id === id);
+			expect(dest).toBeDefined();
+			expect(dest?.cityName).toBe(city);
+			expect(dest?.countryName).toBe(country);
+			expect(dest?.countryCode).toBe(code);
+			expect(dest?.cityPopulation).toBeGreaterThan(0);
+			expect(dest?.countryPopulation).toBeGreaterThan(0);
+		}
+	});
+});
